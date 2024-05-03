@@ -9,6 +9,8 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+using namespace std;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -31,7 +33,13 @@ private slots:
 
     void on_closeMapButton_clicked();
 
+    void updateRoomDescription();
+
+signals:
+    void currentRoomChanged();
+
 private:
+    string direction;
     Ui::MainWindow *ui;
     bool mapVisible;
 

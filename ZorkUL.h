@@ -8,13 +8,14 @@
 #include "mainwindow.h"
 #include <iostream>
 #include <string>
+#include <QObject>
+
 using namespace std;
 
 class ZorkUL {
 private:
     Parser parser;
     Room *currentRoom;
-    void createRooms();
     void printWelcome();
     bool processCommand(Command command);
     void printHelp();
@@ -22,9 +23,13 @@ private:
     void createItems();
     void displayItems();
 
+
 public:
     ZorkUL();
     void play();
+    Room* getCurrentRoom() const;
+    void setCurrentRoom(Room* room);
+    void createRooms();//use friendship
     string go(string direction);
 };
 

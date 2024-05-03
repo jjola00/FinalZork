@@ -37,7 +37,7 @@ void ZorkUL::createRooms()  {
     l = new Room("L'Exit");
 
     a->setExits(b,NULL, NULL, NULL);
-    b->setExits(NULL, d, NULL, c);//cannot go back to a
+    b->setExits(NULL, d, a, c);//cannot go back to a
     c->setExits(f, b, NULL, NULL);
     d->setExits(NULL, e, NULL, b);
     e->setExits(h, NULL, NULL, d);
@@ -50,6 +50,14 @@ void ZorkUL::createRooms()  {
     l->setExits(NULL, NULL, k, NULL);
 
     currentRoom = a;
+}
+
+
+Room* ZorkUL::getCurrentRoom() const{
+    return currentRoom;
+}
+void ZorkUL::setCurrentRoom(Room* room){
+    currentRoom = room;
 }
 /**
  *  Main play routine.  Loops until end of play.
@@ -95,21 +103,6 @@ bool ZorkUL::processCommand(Command command) {
     string commandWord = command.getCommandWord();
     if (commandWord.compare("info") == 0)
         printHelp();
-
-
-    else if (commandWord.compare("map") == 0)
-    {
-        cout << "        [c] --- [f] --- [j]  " << endl;
-        cout << "         |               |   " << endl;
-        cout << "         |               |   " << endl;
-        cout << "[a] --- [b]             [k]  " << endl;
-        cout << "         |               |   " << endl;
-        cout << "         |               |   " << endl;
-        cout << "        [d]              |   " << endl;
-        cout << "         |               |   " << endl;
-        cout << "         |               |   " << endl;
-        cout << "        [e] --- [h] --- [i]  " << endl;
-    }
 
     else if (commandWord.compare("go") == 0)
         goRoom(command);
@@ -196,7 +189,6 @@ string ZorkUL::go(string direction) {
         return currentRoom->longDescription();
     }
 }
-
 // int main(int argc, char* argv[]) {
 //     QApplication app(argc, argv);
 //     QLabel *label = new QLabel("Hello");

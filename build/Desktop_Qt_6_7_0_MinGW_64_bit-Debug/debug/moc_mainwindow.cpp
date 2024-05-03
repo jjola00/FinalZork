@@ -36,13 +36,15 @@ namespace {
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::stringData(
     "MainWindow",
-    "on_mapButton_clicked",
+    "currentRoomChanged",
     "",
+    "on_mapButton_clicked",
     "on_upButton_clicked",
     "on_rightButton_clicked",
     "on_downButton_clicked",
     "on_leftButton_clicked",
-    "on_closeMapButton_clicked"
+    "on_closeMapButton_clicked",
+    "updateRoomDescription"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -55,22 +57,30 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,   62,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   50,    2, 0x08,    1 /* Private */,
-       3,    0,   51,    2, 0x08,    2 /* Private */,
-       4,    0,   52,    2, 0x08,    3 /* Private */,
-       5,    0,   53,    2, 0x08,    4 /* Private */,
-       6,    0,   54,    2, 0x08,    5 /* Private */,
-       7,    0,   55,    2, 0x08,    6 /* Private */,
+       3,    0,   63,    2, 0x08,    2 /* Private */,
+       4,    0,   64,    2, 0x08,    3 /* Private */,
+       5,    0,   65,    2, 0x08,    4 /* Private */,
+       6,    0,   66,    2, 0x08,    5 /* Private */,
+       7,    0,   67,    2, 0x08,    6 /* Private */,
+       8,    0,   68,    2, 0x08,    7 /* Private */,
+       9,    0,   69,    2, 0x08,    8 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -90,6 +100,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMainWindowENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
+        // method 'currentRoomChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_mapButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_upButton_clicked'
@@ -101,6 +113,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'on_leftButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_closeMapButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'updateRoomDescription'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -112,13 +126,24 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_mapButton_clicked(); break;
-        case 1: _t->on_upButton_clicked(); break;
-        case 2: _t->on_rightButton_clicked(); break;
-        case 3: _t->on_downButton_clicked(); break;
-        case 4: _t->on_leftButton_clicked(); break;
-        case 5: _t->on_closeMapButton_clicked(); break;
+        case 0: _t->currentRoomChanged(); break;
+        case 1: _t->on_mapButton_clicked(); break;
+        case 2: _t->on_upButton_clicked(); break;
+        case 3: _t->on_rightButton_clicked(); break;
+        case 4: _t->on_downButton_clicked(); break;
+        case 5: _t->on_leftButton_clicked(); break;
+        case 6: _t->on_closeMapButton_clicked(); break;
+        case 7: _t->updateRoomDescription(); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (MainWindow::*)();
+            if (_t _q_method = &MainWindow::currentRoomChanged; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
         }
     }
     (void)_a;
@@ -143,14 +168,20 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
+}
+
+// SIGNAL 0
+void MainWindow::currentRoomChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

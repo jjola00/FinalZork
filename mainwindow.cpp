@@ -1,7 +1,9 @@
 #include "mainwindow.h"
+#include "ZorkUL.h"
 #include "ui_mainwindow.h"
 
 using namespace std;
+ZorkUL zork;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,12 +11,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     mapVisible = false;
     ui->setupUi(this);
+
     connect(ui->mapButton, &QPushButton::clicked, this, &MainWindow::on_mapButton_clicked);
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
+    connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateRoomDescription);
+
     ui->mapPrint->hide();
     ui->closeMapButton->hide();
 }
-
+void MainWindow::updateRoomDescription() {
+    ui->TestText->isReadOnly();
+    std::string name = zork.getCurrentRoom()->getDescription();
+    QString description = QString::fromStdString(name);
+    ui->TestText->setText(description);
+}
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -47,27 +57,63 @@ void MainWindow::on_mapButton_clicked()
 
 void MainWindow::on_upButton_clicked()
 {
+    direction = "north";
+    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
+    if (nextRoom == NULL)
+        cout << ("direction null");
+    else
+    {
+        zork.setCurrentRoom(nextRoom);
+        emit currentRoomChanged();
 
+    }
 }
 
 
 void MainWindow::on_rightButton_clicked()
 {
+    direction = "east";
+    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
+    if (nextRoom == NULL)
+        cout << ("direction null");
+    else
+    {
+        zork.setCurrentRoom(nextRoom);
+        emit currentRoomChanged();
 
+
+    }
 }
 
 
 void MainWindow::on_downButton_clicked()
 {
+    direction = "south";
+    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
+    if (nextRoom == NULL)
+        cout << ("direction null");
+    else
+    {
+        zork.setCurrentRoom(nextRoom);
+        emit currentRoomChanged();
 
+    }
 }
 
 
 void MainWindow::on_leftButton_clicked()
 {
+    direction = "west";
+    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
+    if (nextRoom == NULL)
+        cout << ("direction null");
+    else
+    {
+        zork.setCurrentRoom(nextRoom);
+        emit currentRoomChanged();
 
+    }
 }
-
 
 void MainWindow::on_closeMapButton_clicked()
 {

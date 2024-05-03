@@ -32,6 +32,7 @@ public:
     QPushButton *rightButton;
     QTextEdit *mapPrint;
     QPushButton *closeMapButton;
+    QTextEdit *TestText;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -66,6 +67,9 @@ public:
         closeMapButton = new QPushButton(centralwidget);
         closeMapButton->setObjectName("closeMapButton");
         closeMapButton->setGeometry(QRect(420, 80, 80, 21));
+        TestText = new QTextEdit(centralwidget);
+        TestText->setObjectName("TestText");
+        TestText->setGeometry(QRect(290, 80, 104, 64));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
