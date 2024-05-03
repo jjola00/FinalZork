@@ -15,6 +15,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,11 +25,13 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *Inventory;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
+    QPushButton *mapButton;
+    QPushButton *downButton;
+    QPushButton *leftButton;
+    QPushButton *upButton;
+    QPushButton *rightButton;
+    QTextEdit *mapPrint;
+    QPushButton *closeMapButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -42,21 +45,27 @@ public:
         Inventory = new QPushButton(centralwidget);
         Inventory->setObjectName("Inventory");
         Inventory->setGeometry(QRect(10, 10, 101, 41));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(550, 410, 61, 51));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(550, 470, 61, 51));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(470, 410, 61, 51));
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(550, 350, 61, 51));
-        pushButton_5 = new QPushButton(centralwidget);
-        pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(630, 410, 61, 51));
+        mapButton = new QPushButton(centralwidget);
+        mapButton->setObjectName("mapButton");
+        mapButton->setGeometry(QRect(550, 410, 61, 51));
+        downButton = new QPushButton(centralwidget);
+        downButton->setObjectName("downButton");
+        downButton->setGeometry(QRect(550, 470, 61, 51));
+        leftButton = new QPushButton(centralwidget);
+        leftButton->setObjectName("leftButton");
+        leftButton->setGeometry(QRect(470, 410, 61, 51));
+        upButton = new QPushButton(centralwidget);
+        upButton->setObjectName("upButton");
+        upButton->setGeometry(QRect(550, 350, 61, 51));
+        rightButton = new QPushButton(centralwidget);
+        rightButton->setObjectName("rightButton");
+        rightButton->setGeometry(QRect(630, 410, 61, 51));
+        mapPrint = new QTextEdit(centralwidget);
+        mapPrint->setObjectName("mapPrint");
+        mapPrint->setGeometry(QRect(140, 70, 371, 271));
+        closeMapButton = new QPushButton(centralwidget);
+        closeMapButton->setObjectName("closeMapButton");
+        closeMapButton->setGeometry(QRect(420, 80, 80, 21));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -75,11 +84,12 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         Inventory->setText(QCoreApplication::translate("MainWindow", "Inventory", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "MAP", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\342\206\223", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "\342\206\221", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "\342\206\222", nullptr));
+        mapButton->setText(QCoreApplication::translate("MainWindow", "MAP", nullptr));
+        downButton->setText(QCoreApplication::translate("MainWindow", "\342\206\223", nullptr));
+        leftButton->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
+        upButton->setText(QCoreApplication::translate("MainWindow", "\342\206\221", nullptr));
+        rightButton->setText(QCoreApplication::translate("MainWindow", "\342\206\222", nullptr));
+        closeMapButton->setText(QCoreApplication::translate("MainWindow", "Hide Map", nullptr));
     } // retranslateUi
 
 };

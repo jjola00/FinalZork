@@ -29,8 +29,11 @@ private slots:
 
     void on_leftButton_clicked();
 
+    void on_closeMapButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    bool mapVisible;
 
 };
 #endif // MAINWINDOW_H
