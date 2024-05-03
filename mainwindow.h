@@ -16,8 +16,21 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QString UserInput();
+
+private slots:
+    void on_mapButton_clicked();
+
+    void on_upButton_clicked();
+
+    void on_rightButton_clicked();
+
+    void on_downButton_clicked();
+
+    void on_leftButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H

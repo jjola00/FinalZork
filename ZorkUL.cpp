@@ -203,5 +203,7 @@ string ZorkUL::go(string direction) {
 //     label->show();
 //     return app.exec();
 //     ZorkUL temp;
+//      ZorkUL temp;
+//      temp.play();
 //     temp.play();
 // }
