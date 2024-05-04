@@ -15,6 +15,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->mapButton, &QPushButton::clicked, this, &MainWindow::on_mapButton_clicked);
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateRoomDescription);
+    connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateBackground);
+
+    QString arrowStyleSheet = "QPushButton { color: white; }";
+    ui->upButton->setStyleSheet(arrowStyleSheet);
+    ui->downButton->setStyleSheet(arrowStyleSheet);
+    ui->leftButton->setStyleSheet(arrowStyleSheet);
+    ui->rightButton->setStyleSheet(arrowStyleSheet);
+    ui->mapButton->setStyleSheet(arrowStyleSheet);
+    ui->Inventory->setStyleSheet(arrowStyleSheet);
+    ui->closeMapButton->setStyleSheet(arrowStyleSheet);
 
     ui->mapPrint->hide();
     ui->closeMapButton->hide();
@@ -24,7 +34,16 @@ void MainWindow::updateRoomDescription() {
     std::string name = zork.getCurrentRoom()->getDescription();
     QString description = QString::fromStdString(name);
     ui->TestText->setText(description);
+    ui->TestText->setStyleSheet("color: white;");
 }
+
+void MainWindow::updateBackground() {
+    int roomNumber = zork.getCurrentRoom()->getRoomNumber(); // Assuming getRoomNumber() returns the room number
+    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/%1.png").arg(roomNumber);
+    QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
+    this->setStyleSheet(styleSheet);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -50,6 +69,7 @@ void MainWindow::on_mapButton_clicked()
                           "        [e] --- [h] --- [i]  \n";
 
         QString mapQString = QString::fromStdString(map);
+        ui->mapPrint->setStyleSheet("color: white;");
         ui->mapPrint->setText(mapQString);
     }
 }
@@ -122,4 +142,5 @@ void MainWindow::on_closeMapButton_clicked()
     ui->closeMapButton->hide();
 
 }
+
 

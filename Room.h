@@ -12,6 +12,7 @@ class Room {
 
 private:
     string description;
+    int roomNumber;
     map<string, Room*> exits;
     string exitString();
     vector <Item> itemsInRoom;
@@ -19,11 +20,10 @@ private:
 
 public:
     int numberOfItems();
-    Room(string description);
+    Room(string description, int number);
+    int getRoomNumber() const;
     string getDescription() const;
     void setExits(Room *north, Room *east, Room *south, Room *west);
-    string shortDescription();
-    string longDescription();
     Room* nextRoom(string direction);
     void addItem(Item *inItem);
     string displayItem();

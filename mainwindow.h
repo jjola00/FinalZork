@@ -35,6 +35,8 @@ private slots:
 
     void updateRoomDescription();
 
+    void updateBackground();
+
 signals:
     void currentRoomChanged();
 

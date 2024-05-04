@@ -5,9 +5,6 @@ Item::Item (string inDescription, float inValue) {
     value = inValue;
 }
 
-Item::Item(string inDescription) {
-    description = inDescription;
-}
 
 void Item::setValue(float inValue)
 {
@@ -15,14 +12,5 @@ void Item::setValue(float inValue)
         cout << "value invalid, must be 0<value<9999" ;
     else
         value = inValue;
-}
-string Item::getShortDescription()
-{
-    return description;
-}
-
-string Item::getLongDescription()
-{
-    return " item(s), " + description + ".\n";
 }
 

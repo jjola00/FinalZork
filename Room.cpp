@@ -2,11 +2,15 @@
 #include "Command.h"
 
 
-Room::Room(string description) {
+Room::Room(string description, int roomNumber) {
     this->description = description;
+    this->roomNumber = roomNumber;
 }
 string Room::getDescription() const{
     return description;
+}
+int Room::getRoomNumber() const{
+    return roomNumber;
 }
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
     if (north != NULL)
@@ -18,15 +22,6 @@ void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
     if (west != NULL)
         exits["west"] = west;
 }
-
-string Room::shortDescription() {
-    return description;
-}
-
-string Room::longDescription() {
-    return "room = " + description + ".\n" + displayItem() + exitString();
-}
-
 string Room::exitString() {
     string returnString = "\nexits =";
     for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
