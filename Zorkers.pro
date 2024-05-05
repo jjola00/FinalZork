@@ -13,7 +13,6 @@ SOURCES += \
     Command.cpp \
     CommandWords.cpp \
     Parser.cpp \
-    Protagonist.cpp \
     Room.cpp \
     ZorkUL.cpp \
     item.cpp \
@@ -25,7 +24,6 @@ HEADERS += \
     Command.h \
     CommandWords.h \
     Parser.h \
-    Protagonist.h \
     Room.h \
     ZorkUL.h \
     item.h \
