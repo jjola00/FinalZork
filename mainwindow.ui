@@ -125,6 +125,16 @@
      </rect>
     </property>
    </widget>
+   <widget class="QTextEdit" name="itemNotification">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>490</y>
+      <width>371</width>
+      <height>64</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

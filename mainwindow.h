@@ -37,6 +37,8 @@ private slots:
 
     void updateBackground();
 
+    void itemNotify();
+
 signals:
     void currentRoomChanged();
 

@@ -13,4 +13,10 @@ void Item::setValue(float inValue)
     else
         value = inValue;
 }
+std::string Item::itemNotification(){
+    return "Room does not contain an item.";
+}
+std::string RoomItem::itemNotification() {
+    return "Room contains a Painting.";
+}
 

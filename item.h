@@ -15,6 +15,11 @@ public:
     Item (string description, float inValue);
     float getValue();
     void setValue(float value);
+    virtual string itemNotification();
 };
-
+class RoomItem : public Item {
+public:
+    RoomItem(string description, float inValue) : Item(description, inValue) {}
+    string itemNotification() override;
+};
 #endif /*ITEM_H_*/

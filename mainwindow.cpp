@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateRoomDescription);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateBackground);
+    connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::itemNotify);
+
 
     QString arrowStyleSheet = "QPushButton { color: white; }";
     ui->upButton->setStyleSheet(arrowStyleSheet);
@@ -142,5 +144,19 @@ void MainWindow::on_closeMapButton_clicked()
     ui->closeMapButton->hide();
 
 }
-
+void MainWindow::itemNotify() {
+    Item item("NaN", 19);
+    RoomItem roomItem("NaN",20);
+    std::string itemNoti;
+    int x = zork.getCurrentRoom()->getRoomNumber();
+    if (x == 2 || x == 5 || x == 7 || x == 11) {
+        itemNoti = roomItem.itemNotification();
+    } else {
+        itemNoti = item.itemNotification();
+    }
+    QString itemString = QString::fromStdString(itemNoti);
+    ui->itemNotification->setStyleSheet("color: white;");
+    ui->itemNotification->setText(itemString);
+    ui->itemNotification->show();
+}
 
