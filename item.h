@@ -9,17 +9,21 @@ using namespace std;
 class Item {
 private:
     string description;
-    float value;
+    string longDescription;
+     float value;
 
 public:
-    Item (string description, float inValue);
+    Item (string description, float inValue, string longDescription);
     float getValue();
+    string getLongDescription();
     void setValue(float value);
     virtual string itemNotification();
+    template<typename T>
+    void interactWithItem(T interaction);
 };
 class RoomItem : public Item {
 public:
-    RoomItem(string description, float inValue) : Item(description, inValue) {}
+    RoomItem(string description, float inValue, string longDescription) : Item(description, inValue, longDescription) {}
     string itemNotification() override;
 };
 #endif /*ITEM_H_*/

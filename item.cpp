@@ -1,8 +1,9 @@
 #include "item.h"
 
-Item::Item (string inDescription, float inValue) {
+Item::Item (string inDescription, float inValue, string inLongDescription) {
     description = inDescription;
     value = inValue;
+    longDescription = inLongDescription;
 }
 
 
@@ -18,5 +19,15 @@ std::string Item::itemNotification(){
 }
 std::string RoomItem::itemNotification() {
     return "Room contains a Painting.";
+}
+std::string Item::getLongDescription(){
+    return longDescription;
+}
+template<typename T>
+void Item::interactWithItem(T action){
+    if constexpr (std::is_same_v<T, std::string>) {
+        action = getLongDescription();
+    }
+
 }
 

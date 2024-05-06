@@ -145,8 +145,8 @@ void MainWindow::on_closeMapButton_clicked()
 
 }
 void MainWindow::itemNotify() {
-    Item item("NaN", 19);
-    RoomItem roomItem("NaN",20);
+    Item item("NaN", 19, "NaN");
+    RoomItem roomItem("NaN",20, "NaN");
     std::string itemNoti;
     int x = zork.getCurrentRoom()->getRoomNumber();
     if (x == 2 || x == 5 || x == 7 || x == 11) {
