@@ -34,7 +34,7 @@ void ZorkUL::createRooms()  {
     k = new Room("La Salle D'exposition",11);
     k->addItem(new Item("Painting Fragment: 4", 4, "Update Later"));
 
-    l = new Room("L'Exit",11);
+    l = new Room("L'Exit",12);
 
     a->setExits(b,NULL, NULL, NULL);
     b->setExits(NULL, d, a, c);//cannot go back to a
@@ -44,7 +44,7 @@ void ZorkUL::createRooms()  {
     f->setExits(j, NULL, c, g);
     g->setExits(NULL, f, NULL, NULL);
     h->setExits(i, NULL, e, NULL);
-    i->setExits(NULL, d, h, k);
+    i->setExits(NULL, NULL, h, k);
     j->setExits(NULL, k, f, NULL);
     k->setExits(l, i, NULL, j);
     l->setExits(NULL, NULL, k, NULL);

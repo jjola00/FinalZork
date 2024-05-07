@@ -30,7 +30,6 @@ public:
     QPushButton *leftButton;
     QPushButton *upButton;
     QPushButton *rightButton;
-    QTextEdit *mapPrint;
     QPushButton *closeMapButton;
     QTextEdit *TestText;
     QTextEdit *itemNotification;
@@ -41,7 +40,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(702, 575);
+        MainWindow->resize(768, 619);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         Inventory = new QPushButton(centralwidget);
@@ -62,22 +61,19 @@ public:
         rightButton = new QPushButton(centralwidget);
         rightButton->setObjectName("rightButton");
         rightButton->setGeometry(QRect(630, 410, 61, 51));
-        mapPrint = new QTextEdit(centralwidget);
-        mapPrint->setObjectName("mapPrint");
-        mapPrint->setGeometry(QRect(140, 70, 371, 271));
         closeMapButton = new QPushButton(centralwidget);
         closeMapButton->setObjectName("closeMapButton");
-        closeMapButton->setGeometry(QRect(420, 80, 80, 21));
+        closeMapButton->setGeometry(QRect(680, 10, 80, 21));
         TestText = new QTextEdit(centralwidget);
         TestText->setObjectName("TestText");
-        TestText->setGeometry(QRect(290, 80, 104, 64));
+        TestText->setGeometry(QRect(270, 10, 231, 41));
         itemNotification = new QTextEdit(centralwidget);
         itemNotification->setObjectName("itemNotification");
         itemNotification->setGeometry(QRect(50, 490, 371, 64));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 702, 17));
+        menubar->setGeometry(QRect(0, 0, 768, 17));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

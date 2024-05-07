@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>575</height>
+    <width>768</width>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -92,21 +92,11 @@
      <string>→</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="mapPrint">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>70</y>
-      <width>371</width>
-      <height>271</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="closeMapButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>80</y>
+      <x>680</x>
+      <y>10</y>
       <width>80</width>
       <height>21</height>
      </rect>
@@ -118,10 +108,10 @@
    <widget class="QTextEdit" name="TestText">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>80</y>
-      <width>104</width>
-      <height>64</height>
+      <x>270</x>
+      <y>10</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
@@ -141,7 +131,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>702</width>
+     <width>768</width>
      <height>17</height>
     </rect>
    </property>

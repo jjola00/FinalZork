@@ -39,13 +39,13 @@ private slots:
 
     void itemNotify();
 
+    void setUI();
+
 signals:
     void currentRoomChanged();
 
 private:
     string direction;
     Ui::MainWindow *ui;
-    bool mapVisible;
-
 };
 #endif // MAINWINDOW_H
