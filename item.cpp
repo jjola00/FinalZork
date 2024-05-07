@@ -5,6 +5,10 @@ Item::Item (string inDescription, float inValue, string inLongDescription) {
     value = inValue;
     longDescription = inLongDescription;
 }
+Item::Item (string inDescription, string inLongDescription) {
+    description = inDescription;
+    longDescription = inLongDescription;
+}
 
 
 void Item::setValue(float inValue)
@@ -18,10 +22,13 @@ std::string Item::itemNotification(){
     return "Room does not contain an item.";
 }
 std::string RoomItem::itemNotification() {
-    return "Room contains a Painting.";
+    return "This room contains a Painting.";
 }
-std::string Item::getLongDescription(){
+std::string Item::getLongDescription() const{
     return longDescription;
+}
+std::string Item::getDescription() const{
+    return description;
 }
 template<typename T>
 void Item::interactWithItem(T action){

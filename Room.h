@@ -16,19 +16,25 @@ private:
     map<string, Room*> exits;
     string exitString();
     vector <Item> itemsInRoom;
-
+    bool hasItem;
 
 public:
     int numberOfItems();
-    Room(string description, int number);
-    int getRoomNumber() const;
-    string getDescription() const;
-    void setExits(Room *north, Room *east, Room *south, Room *west);
+    Room(string description, int number, bool hasItem);
+    Room(string description);
     Room* nextRoom(string direction);
-    void addItem(Item *inItem);
     string displayItem();
     int isItemInRoom(string inString);
+    void addItem(Item *inItem);
     void removeItemFromRoom(int location);
+
+    int getRoomNumber() const;
+    bool getHasItem();
+    string getDescription() const;
+    vector <Item> getItemList();
+
+    void setExits(Room *north, Room *east, Room *south, Room *west);
+    void setHasItem(bool hasItem);
 };
 
 #endif

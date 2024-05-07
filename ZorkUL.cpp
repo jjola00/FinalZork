@@ -18,23 +18,23 @@ ZorkUL::ZorkUL() {
 void ZorkUL::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *l;
 
-    a = new Room("L'entree",1);
-    b = new Room("La Chambre D'artiste",2);
+    a = new Room("L'entree",1, false);
+    b = new Room("La Chambre D'artiste",2, true);
     b->addItem(new Item("Painting Fragment: 1", 1, "Update Later"));
-    c = new Room("Le Salon",3);
-    d = new Room("La Cuisine",4);
-    e = new Room("La Cave",5);
+    c = new Room("Le Salon",3, false);
+    d = new Room("La Cuisine",4, false);
+    e = new Room("La Cave",5, true);
     e->addItem(new Item("Painting Fragment: 2", 2, "Update Later"));
-    f = new Room("La Chambre de la Fille",6);
-    g = new Room("??????????",7);
+    f = new Room("La Chambre de la Fille",6, true);
+    g = new Room("??????????",7, true);
     g->addItem(new Item("Painting Fragment: 3", 3, "Update Later"));
-    h = new Room("La Chambre D'hotes",8);
-    i = new Room("La Salle de Jeux",9);
-    j = new Room("La Chambre de Nuit",10);
-    k = new Room("La Salle D'exposition",11);
+    h = new Room("La Chambre D'hotes",8, false);
+    i = new Room("La Salle de Jeux",9, false);
+    j = new Room("La Chambre de Nuit",10, false);
+    k = new Room("La Salle D'exposition",11, true);
     k->addItem(new Item("Painting Fragment: 4", 4, "Update Later"));
 
-    l = new Room("L'Exit",12);
+    l = new Room("L'Exit",12, false);
 
     a->setExits(b,NULL, NULL, NULL);
     b->setExits(NULL, d, a, c);//cannot go back to a

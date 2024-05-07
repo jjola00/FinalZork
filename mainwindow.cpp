@@ -134,9 +134,7 @@ void MainWindow::itemNotify() {
         itemNoti = item.itemNotification();
     }
     QString itemString = QString::fromStdString(itemNoti);
-    ui->itemNotification->setStyleSheet("color: white; font-family: Bell MT");
     ui->itemNotification->setText(itemString);
-    ui->itemNotification->show();
 }
 void MainWindow::setUI(){
     connect(ui->mapButton, &QPushButton::clicked, this, &MainWindow::on_mapButton_clicked);
@@ -164,6 +162,7 @@ void MainWindow::setUI(){
     ui->itemNotification->setReadOnly(true);
 
     ui->TestText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
+    ui->itemNotification->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
 
     ui->TestText->setFrameStyle(QFrame::NoFrame);
     ui->itemNotification->setFrameStyle(QFrame::NoFrame);

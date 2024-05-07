@@ -69,7 +69,7 @@ public:
         TestText->setGeometry(QRect(270, 10, 231, 41));
         itemNotification = new QTextEdit(centralwidget);
         itemNotification->setObjectName("itemNotification");
-        itemNotification->setGeometry(QRect(50, 490, 371, 64));
+        itemNotification->setGeometry(QRect(50, 534, 241, 31));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");

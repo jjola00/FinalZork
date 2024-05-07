@@ -1,16 +1,22 @@
 #include "Room.h"
 #include "Command.h"
 
-
-Room::Room(string description, int roomNumber) {
+Room::Room(string description, int roomNumber, bool hasItem) {
     this->description = description;
     this->roomNumber = roomNumber;
+    this->hasItem = hasItem;
+}
+Room::Room(string description) {
+    this->description = description;
 }
 string Room::getDescription() const{
     return description;
 }
 int Room::getRoomNumber() const{
     return roomNumber;
+}
+vector <Item> Room::getItemList(){
+    return itemsInRoom;
 }
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
     if (north != NULL)
@@ -33,14 +39,16 @@ string Room::exitString() {
 Room* Room::nextRoom(string direction) {
     map<string, Room*>::iterator next = exits.find(direction); //returns an iterator for the "pair"
     if (next == exits.end())
-        return NULL; // if exits.end() was returned, there's no room in that direction.
-    return next->second; // If there is a room, remove the "second" (Room*)
-        // part of the "pair" (<string, Room*>) and return it.
+        return NULL;
+    return next->second;
 }
 
 void Room::addItem(Item *inItem) {
-    //cout <<endl;
-    //cout << "Just added" + inItem->getLongDescription();
     itemsInRoom.push_back(*inItem);
 }
-
+bool Room::getHasItem(){
+    return hasItem;
+}
+void Room::setHasItem(bool hasAnItem){
+    hasItem = hasAnItem;
+}

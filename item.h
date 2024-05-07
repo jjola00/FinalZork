@@ -13,9 +13,11 @@ private:
      float value;
 
 public:
-    Item (string description, float inValue, string longDescription);
+    Item(string description, float inValue, string longDescription);
+    Item(string description, string longDescription);
     float getValue();
-    string getLongDescription();
+    string getLongDescription() const;
+    string getDescription() const;
     void setValue(float value);
     virtual string itemNotification();
     template<typename T>
