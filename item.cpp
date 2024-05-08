@@ -1,6 +1,6 @@
 #include "item.h"
 
-Item::Item (string inDescription, float inValue, string inLongDescription) {
+Item::Item (string inDescription, int inValue, string inLongDescription) {
     description = inDescription;
     value = inValue;
     longDescription = inLongDescription;
@@ -11,12 +11,15 @@ Item::Item (string inDescription, string inLongDescription) {
 }
 
 
-void Item::setValue(float inValue)
+void Item::setValue(int inValue)
 {
     if (inValue > 9999 || inValue < 0)
         cout << "value invalid, must be 0<value<9999" ;
     else
         value = inValue;
+}
+int Item::getValue() const{
+    return value;
 }
 std::string Item::itemNotification(){
     return "Room does not contain an item.";

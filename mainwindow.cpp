@@ -16,6 +16,12 @@ void MainWindow::updateRoomDescription() {
     std::string name = zork.getCurrentRoom()->getDescription();
     QString description = QString::fromStdString(name);
     ui->TestText->setText(description);
+    if(zork.getCurrentRoom()->getHasItem() == true){
+        ui->itemTakeButton->show();
+    }
+    else{
+        ui->itemTakeButton->hide();
+    }
 
 }
 
@@ -34,15 +40,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_mapButton_clicked()
 {
-    ui->upButton->hide();
-    ui->leftButton->hide();
-    ui->rightButton->hide();
-    ui->downButton->hide();
-    ui->Inventory->hide();
-    ui->TestText->hide();
-    ui->itemNotification->hide();
+    hideUI();
     ui->closeMapButton->show();
-    ui->mapButton->hide();
 
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/map.jpg");
     QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
@@ -59,8 +58,9 @@ void MainWindow::on_upButton_clicked()
     else
     {
         zork.setCurrentRoom(nextRoom);
+        Item* item = nextRoom->getItem();
+        zork.setCurrentItem(item);
         emit currentRoomChanged();
-
     }
 }
 
@@ -74,9 +74,9 @@ void MainWindow::on_rightButton_clicked()
     else
     {
         zork.setCurrentRoom(nextRoom);
+        Item* item = nextRoom->getItem();
+        zork.setCurrentItem(item);
         emit currentRoomChanged();
-
-
     }
 }
 
@@ -90,8 +90,9 @@ void MainWindow::on_downButton_clicked()
     else
     {
         zork.setCurrentRoom(nextRoom);
+        Item* item = nextRoom->getItem();
+        zork.setCurrentItem(item);
         emit currentRoomChanged();
-
     }
 }
 
@@ -105,8 +106,9 @@ void MainWindow::on_leftButton_clicked()
     else
     {
         zork.setCurrentRoom(nextRoom);
+        Item* item = nextRoom->getItem();
+        zork.setCurrentItem(item);
         emit currentRoomChanged();
-
     }
 }
 
@@ -120,9 +122,11 @@ void MainWindow::on_closeMapButton_clicked()
     ui->TestText->show();
     ui->mapButton->show();
     ui->itemNotification->show();
+    ui->itemTakeButton->show();
     ui->closeMapButton->hide();
     updateBackground();
 }
+
 void MainWindow::itemNotify() {
     Item item("NaN", 19, "NaN");
     RoomItem roomItem("NaN",20, "NaN");
@@ -155,8 +159,10 @@ void MainWindow::setUI(){
     ui->mapButton->setStyleSheet(arrowStyleSheet);
     ui->Inventory->setStyleSheet(arrowStyleSheet);
     ui->closeMapButton->setStyleSheet(arrowStyleSheet);
+    ui->itemTakeButton->setStyleSheet(arrowStyleSheet);
 
     ui->closeMapButton->hide();
+    ui->itemTakeButton->hide();
 
     ui->TestText->setReadOnly(true);
     ui->itemNotification->setReadOnly(true);
@@ -168,5 +174,30 @@ void MainWindow::setUI(){
     ui->itemNotification->setFrameStyle(QFrame::NoFrame);
 
     updateBackground();
+}
+
+void MainWindow::on_itemTakeButton_clicked()
+{
+    hideUI();
+    ui->closeMapButton->hide();
+
+    Item* currentItem = zork.getCurrentItem();
+    if (currentItem != nullptr) {
+        QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/Painting%1.png").arg(currentItem->getValue());
+        QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
+        this->setStyleSheet(styleSheet);
+    }
+}
+
+void MainWindow::hideUI(){
+    ui->upButton->hide();
+    ui->leftButton->hide();
+    ui->rightButton->hide();
+    ui->downButton->hide();
+    ui->Inventory->hide();
+    ui->TestText->hide();
+    ui->itemNotification->hide();
+    ui->mapButton->hide();
+    ui->itemTakeButton->hide();
 }
 

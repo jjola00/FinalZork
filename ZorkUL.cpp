@@ -25,7 +25,7 @@ void ZorkUL::createRooms()  {
     d = new Room("La Cuisine",4, false);
     e = new Room("La Cave",5, true);
     e->addItem(new Item("Painting Fragment: 2", 2, "Update Later"));
-    f = new Room("La Chambre de la Fille",6, true);
+    f = new Room("La Chambre de la Fille",6, false);
     g = new Room("??????????",7, true);
     g->addItem(new Item("Painting Fragment: 3", 3, "Update Later"));
     h = new Room("La Chambre D'hotes",8, false);
@@ -58,4 +58,11 @@ Room* ZorkUL::getCurrentRoom() const{
 }
 void ZorkUL::setCurrentRoom(Room* room){
     currentRoom = room;
+}
+
+Item* ZorkUL::getCurrentItem() const{
+    return currentItem;
+}
+void ZorkUL::setCurrentItem(Item* item) {
+    currentItem = item;
 }

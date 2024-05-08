@@ -41,6 +41,10 @@ private slots:
 
     void setUI();
 
+    void on_itemTakeButton_clicked();
+
+    void hideUI();
+
 signals:
     void currentRoomChanged();
 

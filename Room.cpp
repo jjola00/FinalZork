@@ -18,6 +18,9 @@ int Room::getRoomNumber() const{
 vector <Item> Room::getItemList(){
     return itemsInRoom;
 }
+Item* Room::getItem() const{
+    return item;
+}
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
     if (north != NULL)
         exits["north"] = north;
@@ -45,6 +48,7 @@ Room* Room::nextRoom(string direction) {
 
 void Room::addItem(Item *inItem) {
     itemsInRoom.push_back(*inItem);
+    item = inItem;
 }
 bool Room::getHasItem(){
     return hasItem;

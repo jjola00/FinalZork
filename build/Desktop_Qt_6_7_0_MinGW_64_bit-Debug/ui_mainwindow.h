@@ -33,6 +33,7 @@ public:
     QPushButton *closeMapButton;
     QTextEdit *TestText;
     QTextEdit *itemNotification;
+    QPushButton *itemTakeButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -70,6 +71,9 @@ public:
         itemNotification = new QTextEdit(centralwidget);
         itemNotification->setObjectName("itemNotification");
         itemNotification->setGeometry(QRect(50, 534, 241, 31));
+        itemTakeButton = new QPushButton(centralwidget);
+        itemTakeButton->setObjectName("itemTakeButton");
+        itemTakeButton->setGeometry(QRect(639, 10, 121, 41));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -94,6 +98,7 @@ public:
         upButton->setText(QCoreApplication::translate("MainWindow", "\342\206\221", nullptr));
         rightButton->setText(QCoreApplication::translate("MainWindow", "\342\206\222", nullptr));
         closeMapButton->setText(QCoreApplication::translate("MainWindow", "Hide Map", nullptr));
+        itemTakeButton->setText(QCoreApplication::translate("MainWindow", "Take The Painting.", nullptr));
     } // retranslateUi
 
 };

@@ -17,6 +17,7 @@ private:
     string exitString();
     vector <Item> itemsInRoom;
     bool hasItem;
+    Item* item;
 
 public:
     int numberOfItems();
@@ -32,6 +33,7 @@ public:
     bool getHasItem();
     string getDescription() const;
     vector <Item> getItemList();
+    Item* getItem() const;
 
     void setExits(Room *north, Room *east, Room *south, Room *west);
     void setHasItem(bool hasItem);

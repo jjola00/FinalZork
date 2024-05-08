@@ -14,9 +14,9 @@ using namespace std;
 
 class ZorkUL {
 private:
-    friend class Inventory;
     Parser parser;
     Room *currentRoom;
+    Item *currentItem;
     void printWelcome();
     bool processCommand(Command command);
     void printHelp();
@@ -29,7 +29,9 @@ public:
     ZorkUL();
     void play();
     Room* getCurrentRoom() const;
+    Item* getCurrentItem() const;
     void setCurrentRoom(Room* room);
+    void setCurrentItem(Item* item);
     void createRooms();
     string go(string direction);
 };
