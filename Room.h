@@ -15,14 +15,12 @@ private:
     int roomNumber;
     map<string, Room*> exits;
     string exitString();
-    vector <Item> itemsInRoom;
     bool hasItem;
     Item* item;
 
 public:
     int numberOfItems();
     Room(string description, int number, bool hasItem);
-    Room(string description);
     Room* nextRoom(string direction);
     string displayItem();
     int isItemInRoom(string inString);
@@ -32,7 +30,6 @@ public:
     int getRoomNumber() const;
     bool getHasItem();
     string getDescription() const;
-    vector <Item> getItemList();
     Item* getItem() const;
 
     void setExits(Room *north, Room *east, Room *south, Room *west);

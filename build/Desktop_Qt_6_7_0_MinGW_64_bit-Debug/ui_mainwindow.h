@@ -34,6 +34,7 @@ public:
     QTextEdit *TestText;
     QTextEdit *itemNotification;
     QPushButton *itemTakeButton;
+    QPushButton *addToInventoryButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -74,6 +75,9 @@ public:
         itemTakeButton = new QPushButton(centralwidget);
         itemTakeButton->setObjectName("itemTakeButton");
         itemTakeButton->setGeometry(QRect(639, 10, 121, 41));
+        addToInventoryButton = new QPushButton(centralwidget);
+        addToInventoryButton->setObjectName("addToInventoryButton");
+        addToInventoryButton->setGeometry(QRect(640, 10, 121, 41));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -99,6 +103,7 @@ public:
         rightButton->setText(QCoreApplication::translate("MainWindow", "\342\206\222", nullptr));
         closeMapButton->setText(QCoreApplication::translate("MainWindow", "Hide Map", nullptr));
         itemTakeButton->setText(QCoreApplication::translate("MainWindow", "Take The Painting.", nullptr));
+        addToInventoryButton->setText(QCoreApplication::translate("MainWindow", "Add to Inventory.", nullptr));
     } // retranslateUi
 
 };

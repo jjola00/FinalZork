@@ -138,6 +138,19 @@
      <string>Take The Painting.</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="addToInventoryButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>10</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add to Inventory.</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

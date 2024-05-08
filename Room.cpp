@@ -6,17 +6,11 @@ Room::Room(string description, int roomNumber, bool hasItem) {
     this->roomNumber = roomNumber;
     this->hasItem = hasItem;
 }
-Room::Room(string description) {
-    this->description = description;
-}
 string Room::getDescription() const{
     return description;
 }
 int Room::getRoomNumber() const{
     return roomNumber;
-}
-vector <Item> Room::getItemList(){
-    return itemsInRoom;
 }
 Item* Room::getItem() const{
     return item;
@@ -47,7 +41,6 @@ Room* Room::nextRoom(string direction) {
 }
 
 void Room::addItem(Item *inItem) {
-    itemsInRoom.push_back(*inItem);
     item = inItem;
 }
 bool Room::getHasItem(){

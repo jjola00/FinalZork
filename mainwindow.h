@@ -39,11 +39,17 @@ private slots:
 
     void itemNotify();
 
-    void setUI();
+    void takeItem();
 
     void on_itemTakeButton_clicked();
 
+    void setUI();
+
     void hideUI();
+
+    void showUI();
+
+    void on_addToInventoryButton_clicked();
 
 signals:
     void currentRoomChanged();

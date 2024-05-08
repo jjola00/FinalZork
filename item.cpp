@@ -5,11 +5,6 @@ Item::Item (string inDescription, int inValue, string inLongDescription) {
     value = inValue;
     longDescription = inLongDescription;
 }
-Item::Item (string inDescription, string inLongDescription) {
-    description = inDescription;
-    longDescription = inLongDescription;
-}
-
 
 void Item::setValue(int inValue)
 {

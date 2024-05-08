@@ -14,7 +14,6 @@ private:
 
 public:
     Item(string description, int inValue, string longDescription);
-    Item(string description, string longDescription);
     int getValue() const;
     string getLongDescription() const;
     string getDescription() const;

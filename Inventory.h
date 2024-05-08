@@ -5,7 +5,7 @@
 #include "Room.h"
 
 using namespace std;
-class Inventory: public Item, public Room
+class Inventory
 {
 private:
     string roomName;
@@ -15,9 +15,9 @@ private:
 
 public:
     Inventory(string roomName, string itemDescription, string itemLongDescription);
+    Inventory();
     string toString(vector <Inventory> itemsInRoom);
     void addItem(string description, string longDescription, string roomDescription);
-
     string getRoomName() const;
     string getDescription() const;
     string getLongDescription() const;

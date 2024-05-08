@@ -3,11 +3,14 @@
 #include <vector>
 
 
-Inventory::Inventory(std::string itemDescription,  std::string itemLongDescription, std::string roomName)
-    : Item(itemDescription, itemLongDescription), Room(roomName) {
+using namespace std;
+Inventory::Inventory(string itemDescription,string itemLongDescription, string roomName) {
     this->description = itemDescription;
     this->longDescription = itemLongDescription;
     this->roomName = roomName;
+}
+Inventory::Inventory(){
+
 }
 string Inventory::getDescription() const{
     return description;

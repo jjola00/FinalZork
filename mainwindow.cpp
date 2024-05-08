@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "Inventory.h"
 #include "ZorkUL.h"
 #include "ui_mainwindow.h"
 
@@ -16,13 +17,6 @@ void MainWindow::updateRoomDescription() {
     std::string name = zork.getCurrentRoom()->getDescription();
     QString description = QString::fromStdString(name);
     ui->TestText->setText(description);
-    if(zork.getCurrentRoom()->getHasItem() == true){
-        ui->itemTakeButton->show();
-    }
-    else{
-        ui->itemTakeButton->hide();
-    }
-
 }
 
 void MainWindow::updateBackground() {
@@ -114,17 +108,8 @@ void MainWindow::on_leftButton_clicked()
 
 void MainWindow::on_closeMapButton_clicked()
 {
-    ui->upButton->show();
-    ui->leftButton->show();
-    ui->rightButton->show();
-    ui->downButton->show();
-    ui->Inventory->show();
-    ui->TestText->show();
-    ui->mapButton->show();
-    ui->itemNotification->show();
-    ui->itemTakeButton->show();
+    showUI();
     ui->closeMapButton->hide();
-    updateBackground();
 }
 
 void MainWindow::itemNotify() {
@@ -140,15 +125,51 @@ void MainWindow::itemNotify() {
     QString itemString = QString::fromStdString(itemNoti);
     ui->itemNotification->setText(itemString);
 }
+
+void MainWindow::takeItem(){
+    if(zork.getCurrentRoom()->getHasItem() == true){
+        ui->itemTakeButton->show();
+    }
+    else{
+        ui->itemTakeButton->hide();
+    }
+}
+
+void MainWindow::on_itemTakeButton_clicked()
+{
+    zork.getCurrentRoom()->setHasItem(false);
+    hideUI();
+    ui->closeMapButton->hide();
+    ui->addToInventoryButton->show();
+
+    Item* currentItem = zork.getCurrentItem();
+    if (currentItem != nullptr) {
+        QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/Painting%1.png").arg(currentItem->getValue());
+        QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
+        this->setStyleSheet(styleSheet);
+    }
+}
+
+void MainWindow::on_addToInventoryButton_clicked()
+{
+    Inventory inventory;
+    string description = zork.getCurrentItem()->getDescription();
+    string longDescription = zork.getCurrentItem()->getLongDescription();
+    string roomName = zork.getCurrentRoom()->getDescription();
+    inventory.addItem(description, longDescription, roomName);
+    showUI();
+    takeItem();
+    zork.setCurrentItem(nullptr);
+    ui->addToInventoryButton->hide();
+}
+
 void MainWindow::setUI(){
     connect(ui->mapButton, &QPushButton::clicked, this, &MainWindow::on_mapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateRoomDescription);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateBackground);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::itemNotify);
-    connect(ui->closeMapButton, &QPushButton::clicked, this, [=]() {
-        this->setStyleSheet("");
-    });
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
+    connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::takeItem);
 
 
     QString arrowStyleSheet = "QPushButton { color: white; }";
@@ -160,9 +181,11 @@ void MainWindow::setUI(){
     ui->Inventory->setStyleSheet(arrowStyleSheet);
     ui->closeMapButton->setStyleSheet(arrowStyleSheet);
     ui->itemTakeButton->setStyleSheet(arrowStyleSheet);
+    ui->addToInventoryButton->setStyleSheet(arrowStyleSheet);
 
     ui->closeMapButton->hide();
     ui->itemTakeButton->hide();
+    ui->addToInventoryButton->hide();
 
     ui->TestText->setReadOnly(true);
     ui->itemNotification->setReadOnly(true);
@@ -176,19 +199,6 @@ void MainWindow::setUI(){
     updateBackground();
 }
 
-void MainWindow::on_itemTakeButton_clicked()
-{
-    hideUI();
-    ui->closeMapButton->hide();
-
-    Item* currentItem = zork.getCurrentItem();
-    if (currentItem != nullptr) {
-        QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/Painting%1.png").arg(currentItem->getValue());
-        QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
-        this->setStyleSheet(styleSheet);
-    }
-}
-
 void MainWindow::hideUI(){
     ui->upButton->hide();
     ui->leftButton->hide();
@@ -199,5 +209,18 @@ void MainWindow::hideUI(){
     ui->itemNotification->hide();
     ui->mapButton->hide();
     ui->itemTakeButton->hide();
+}
+
+void MainWindow::showUI(){
+    ui->upButton->show();
+    ui->leftButton->show();
+    ui->rightButton->show();
+    ui->downButton->show();
+    ui->Inventory->show();
+    ui->TestText->show();
+    ui->mapButton->show();
+    ui->itemNotification->show();
+    ui->itemTakeButton->show();
+    updateBackground();
 }
 
