@@ -3,6 +3,7 @@
 #include "ZorkUL.h"
 #include "servant.h"
 #include "ui_mainwindow.h"
+#include <iostream>
 
 using namespace std;
 ZorkUL zork;
@@ -15,6 +16,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setUI();
+}
+void MainWindow::createRooms()
+{
+    zork.createRooms();
 }
 void MainWindow::updateRoomDescription() {
     std::string name = zork.getCurrentRoom()->getDescription();

@@ -1,6 +1,4 @@
 #include "Inventory.h"
-#include "ZorkUL.h"
-#include <vector>
 
 
 using namespace std;

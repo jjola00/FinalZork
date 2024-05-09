@@ -1,11 +1,9 @@
-debug/Command.o
-debug/CommandWords.o
 debug/Inventory.o
-debug/Parser.o
 debug/Room.o
 debug/ZorkUL.o
 debug/character.o
 debug/entity.o
+debug/gamemanager.o
 debug/item.o
 debug/main.o
 debug/mainwindow.o

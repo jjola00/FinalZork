@@ -1,11 +1,9 @@
-release/Command.o
-release/CommandWords.o
 release/Inventory.o
-release/Parser.o
 release/Room.o
 release/ZorkUL.o
 release/character.o
 release/entity.o
+release/gamemanager.o
 release/item.o
 release/main.o
 release/mainwindow.o

@@ -9,28 +9,24 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Command.cpp \
-    CommandWords.cpp \
     Inventory.cpp \
-    Parser.cpp \
     Room.cpp \
     ZorkUL.cpp \
     character.cpp \
     entity.cpp \
+    gamemanager.cpp \
     item.cpp \
     main.cpp \
     mainwindow.cpp \
     servant.cpp
 
 HEADERS += \
-    Command.h \
-    CommandWords.h \
     Inventory.h \
-    Parser.h \
     Room.h \
     ZorkUL.h \
     character.h \
     entity.h \
+    gamemanager.h \
     item.h \
     mainwindow.h \
     servant.h

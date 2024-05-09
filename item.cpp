@@ -1,4 +1,5 @@
 #include "item.h"
+#include <iostream>
 
 Item::Item (string inDescription, int inValue, string inLongDescription) {
     description = inDescription;

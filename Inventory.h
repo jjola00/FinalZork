@@ -1,7 +1,6 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "item.h"
 #include "Room.h"
 
 using namespace std;
