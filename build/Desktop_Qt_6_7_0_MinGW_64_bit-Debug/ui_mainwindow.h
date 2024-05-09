@@ -35,6 +35,8 @@ public:
     QTextEdit *itemNotification;
     QPushButton *itemTakeButton;
     QPushButton *addToInventoryButton;
+    QPushButton *closeInventory;
+    QTextEdit *inventoryText;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -78,6 +80,12 @@ public:
         addToInventoryButton = new QPushButton(centralwidget);
         addToInventoryButton->setObjectName("addToInventoryButton");
         addToInventoryButton->setGeometry(QRect(640, 10, 121, 41));
+        closeInventory = new QPushButton(centralwidget);
+        closeInventory->setObjectName("closeInventory");
+        closeInventory->setGeometry(QRect(10, 10, 101, 41));
+        inventoryText = new QTextEdit(centralwidget);
+        inventoryText->setObjectName("inventoryText");
+        inventoryText->setGeometry(QRect(100, 110, 591, 431));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -95,7 +103,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        Inventory->setText(QCoreApplication::translate("MainWindow", "Inventory", nullptr));
+        Inventory->setText(QCoreApplication::translate("MainWindow", "Open Inventory", nullptr));
         mapButton->setText(QCoreApplication::translate("MainWindow", "MAP", nullptr));
         downButton->setText(QCoreApplication::translate("MainWindow", "\342\206\223", nullptr));
         leftButton->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
@@ -103,7 +111,8 @@ public:
         rightButton->setText(QCoreApplication::translate("MainWindow", "\342\206\222", nullptr));
         closeMapButton->setText(QCoreApplication::translate("MainWindow", "Hide Map", nullptr));
         itemTakeButton->setText(QCoreApplication::translate("MainWindow", "Take The Painting.", nullptr));
-        addToInventoryButton->setText(QCoreApplication::translate("MainWindow", "Add to Inventory.", nullptr));
+        addToInventoryButton->setText(QCoreApplication::translate("MainWindow", "Add to Inventory", nullptr));
+        closeInventory->setText(QCoreApplication::translate("MainWindow", "Close Inventory", nullptr));
     } // retranslateUi
 
 };

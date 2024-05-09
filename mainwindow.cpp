@@ -5,6 +5,8 @@
 
 using namespace std;
 ZorkUL zork;
+Inventory inventory;
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -106,9 +108,31 @@ void MainWindow::on_leftButton_clicked()
     }
 }
 
+void MainWindow::on_Inventory_clicked()
+{
+    ui->closeInventory->show();
+    hideUI();
+    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/item.png");
+    QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
+    this->setStyleSheet(styleSheet);
+    ui->inventoryText->show();
+    string inventoryString = inventory.toString(inventory.getItemList());
+    QString invString = QString::fromStdString(inventoryString);
+    ui->inventoryText->setText(invString);
+}
+
+void MainWindow::on_closeInventory_clicked()
+{
+    showUI();
+    ui->inventoryText->hide();
+    takeItem();
+    ui->closeInventory->hide();
+}
+
 void MainWindow::on_closeMapButton_clicked()
 {
     showUI();
+    takeItem();
     ui->closeMapButton->hide();
 }
 
@@ -116,8 +140,7 @@ void MainWindow::itemNotify() {
     Item item("NaN", 19, "NaN");
     RoomItem roomItem("NaN",20, "NaN");
     std::string itemNoti;
-    int x = zork.getCurrentRoom()->getRoomNumber();
-    if (x == 2 || x == 5 || x == 7 || x == 11) {
+    if (zork.getCurrentRoom()->getHasItem() == true) {
         itemNoti = roomItem.itemNotification();
     } else {
         itemNoti = item.itemNotification();
@@ -138,6 +161,7 @@ void MainWindow::takeItem(){
 void MainWindow::on_itemTakeButton_clicked()
 {
     zork.getCurrentRoom()->setHasItem(false);
+    itemNotify();
     hideUI();
     ui->closeMapButton->hide();
     ui->addToInventoryButton->show();
@@ -152,7 +176,6 @@ void MainWindow::on_itemTakeButton_clicked()
 
 void MainWindow::on_addToInventoryButton_clicked()
 {
-    Inventory inventory;
     string description = zork.getCurrentItem()->getDescription();
     string longDescription = zork.getCurrentItem()->getLongDescription();
     string roomName = zork.getCurrentRoom()->getDescription();
@@ -182,18 +205,25 @@ void MainWindow::setUI(){
     ui->closeMapButton->setStyleSheet(arrowStyleSheet);
     ui->itemTakeButton->setStyleSheet(arrowStyleSheet);
     ui->addToInventoryButton->setStyleSheet(arrowStyleSheet);
+    ui->closeInventory->setStyleSheet(arrowStyleSheet);
 
     ui->closeMapButton->hide();
     ui->itemTakeButton->hide();
     ui->addToInventoryButton->hide();
+    ui->closeInventory->hide();
+    ui->inventoryText->hide();
 
     ui->TestText->setReadOnly(true);
     ui->itemNotification->setReadOnly(true);
+    ui->inventoryText->setReadOnly(true);
+
 
     ui->TestText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
+    ui->inventoryText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
     ui->itemNotification->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
 
     ui->TestText->setFrameStyle(QFrame::NoFrame);
+    ui->inventoryText->setFrameStyle(QFrame::NoFrame);
     ui->itemNotification->setFrameStyle(QFrame::NoFrame);
 
     updateBackground();

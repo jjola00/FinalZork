@@ -51,6 +51,10 @@ private slots:
 
     void on_addToInventoryButton_clicked();
 
+    void on_Inventory_clicked();
+
+    void on_closeInventory_clicked();
+
 signals:
     void currentRoomChanged();
 

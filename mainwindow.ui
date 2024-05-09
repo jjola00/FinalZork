@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Inventory</string>
+     <string>Open Inventory</string>
     </property>
    </widget>
    <widget class="QPushButton" name="mapButton">
@@ -148,7 +148,30 @@
      </rect>
     </property>
     <property name="text">
-     <string>Add to Inventory.</string>
+     <string>Add to Inventory</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="closeInventory">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Close Inventory</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="inventoryText">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>110</y>
+      <width>591</width>
+      <height>431</height>
+     </rect>
     </property>
    </widget>
   </widget>

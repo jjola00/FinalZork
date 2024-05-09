@@ -28,7 +28,10 @@ void Inventory::addItem(string description, string longDescription, string roomD
 string Inventory::toString(vector <Inventory> itemList){
     std::string result;
     for (const auto& item : itemList) {
-        result += item.getDescription() + "\n" + item.getLongDescription() + "\nThis item was found in" + item.getRoomName()  + "\n\n\n";
+        result += item.getDescription() + "\n" + item.getLongDescription() + "\nThis item was found in " + item.getRoomName()  + "\n\n";
     }
     return result;
+}
+vector <Inventory> Inventory::getItemList(){
+    return itemList;
 }
