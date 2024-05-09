@@ -15,6 +15,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
@@ -37,7 +38,7 @@ public:
     QPushButton *addToInventoryButton;
     QPushButton *closeInventory;
     QTextEdit *inventoryText;
-    QTextEdit *servantText;
+    QTextBrowser *servantText;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -46,6 +47,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(768, 619);
+        MainWindow->setWindowOpacity(1.000000000000000);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         Inventory = new QPushButton(centralwidget);
@@ -87,9 +89,9 @@ public:
         inventoryText = new QTextEdit(centralwidget);
         inventoryText->setObjectName("inventoryText");
         inventoryText->setGeometry(QRect(100, 110, 591, 441));
-        servantText = new QTextEdit(centralwidget);
+        servantText = new QTextBrowser(centralwidget);
         servantText->setObjectName("servantText");
-        servantText->setGeometry(QRect(100, 110, 591, 64));
+        servantText->setGeometry(QRect(100, 110, 241, 41));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");

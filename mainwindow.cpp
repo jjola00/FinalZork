@@ -224,7 +224,7 @@ void MainWindow::setUI(){
     ui->inventoryText->setReadOnly(true);
 
 
-    ui->TestText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
+    ui->TestText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt;");
     ui->inventoryText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
     ui->servantText->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
     ui->itemNotification->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
