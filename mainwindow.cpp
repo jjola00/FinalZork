@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "Inventory.h"
 #include "ZorkUL.h"
+#include "servant.h"
 #include "ui_mainwindow.h"
 
 using namespace std;
@@ -23,6 +24,11 @@ void MainWindow::updateRoomDescription() {
 
 void MainWindow::updateBackground() {
     int roomNumber = zork.getCurrentRoom()->getRoomNumber();
+    Servant servant("James", "Tall and quiet");
+    string speech = servant.speak(roomNumber);
+    QString itemString = QString::fromStdString(speech);
+    ui->servantText->setText(itemString);
+
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/%1.png").arg(roomNumber);
     QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
     this->setStyleSheet(styleSheet);
@@ -137,14 +143,14 @@ void MainWindow::on_closeMapButton_clicked()
 }
 
 void MainWindow::itemNotify() {
+    int x;
     Item item("NaN", 19, "NaN");
-    RoomItem roomItem("NaN",20, "NaN");
-    std::string itemNoti;
     if (zork.getCurrentRoom()->getHasItem() == true) {
-        itemNoti = roomItem.itemNotification();
+         x = 1;
     } else {
-        itemNoti = item.itemNotification();
+        x = 0;
     }
+    string itemNoti = item.itemNotification(x);
     QString itemString = QString::fromStdString(itemNoti);
     ui->itemNotification->setText(itemString);
 }
@@ -194,7 +200,6 @@ void MainWindow::setUI(){
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::takeItem);
 
-
     QString arrowStyleSheet = "QPushButton { color: white; }";
     ui->upButton->setStyleSheet(arrowStyleSheet);
     ui->downButton->setStyleSheet(arrowStyleSheet);
@@ -214,15 +219,18 @@ void MainWindow::setUI(){
     ui->inventoryText->hide();
 
     ui->TestText->setReadOnly(true);
+    ui->servantText->setReadOnly(true);
     ui->itemNotification->setReadOnly(true);
     ui->inventoryText->setReadOnly(true);
 
 
     ui->TestText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
     ui->inventoryText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
+    ui->servantText->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
     ui->itemNotification->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
 
     ui->TestText->setFrameStyle(QFrame::NoFrame);
+    ui->servantText->setFrameStyle(QFrame::NoFrame);
     ui->inventoryText->setFrameStyle(QFrame::NoFrame);
     ui->itemNotification->setFrameStyle(QFrame::NoFrame);
 

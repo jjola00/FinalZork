@@ -37,6 +37,7 @@ public:
     QPushButton *addToInventoryButton;
     QPushButton *closeInventory;
     QTextEdit *inventoryText;
+    QTextEdit *servantText;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -85,7 +86,10 @@ public:
         closeInventory->setGeometry(QRect(10, 10, 101, 41));
         inventoryText = new QTextEdit(centralwidget);
         inventoryText->setObjectName("inventoryText");
-        inventoryText->setGeometry(QRect(100, 110, 591, 431));
+        inventoryText->setGeometry(QRect(100, 110, 591, 441));
+        servantText = new QTextEdit(centralwidget);
+        servantText->setObjectName("servantText");
+        servantText->setGeometry(QRect(100, 110, 591, 64));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");

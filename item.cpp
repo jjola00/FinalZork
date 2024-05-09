@@ -16,16 +16,16 @@ void Item::setValue(int inValue)
 int Item::getValue() const{
     return value;
 }
-std::string Item::itemNotification(){
+string Item::itemNotification(int x){
+    if (x == 1){
+        return "Room contains a Painting.";
+    }
     return "Room does not contain an item.";
 }
-std::string RoomItem::itemNotification() {
-    return "This room contains a Painting.";
-}
-std::string Item::getLongDescription() const{
+string Item::getLongDescription() const{
     return longDescription;
 }
-std::string Item::getDescription() const{
+string Item::getDescription() const{
     return description;
 }
 template<typename T>

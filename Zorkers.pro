@@ -15,9 +15,12 @@ SOURCES += \
     Parser.cpp \
     Room.cpp \
     ZorkUL.cpp \
+    character.cpp \
+    entity.cpp \
     item.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    servant.cpp
 
 HEADERS += \
     Command.h \
@@ -26,8 +29,11 @@ HEADERS += \
     Parser.h \
     Room.h \
     ZorkUL.h \
+    character.h \
+    entity.h \
     item.h \
-    mainwindow.h
+    mainwindow.h \
+    servant.h
 
 FORMS += \
     mainwindow.ui
