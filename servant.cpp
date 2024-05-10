@@ -8,7 +8,7 @@ Servant::Servant(string name, string description)
     this->description = description;
 }
 
-string Servant::speak(int x){
+string Servant::speak(unsigned int x = 4){
     string dialogue;
     ZorkUL zork;
     switch (x) {

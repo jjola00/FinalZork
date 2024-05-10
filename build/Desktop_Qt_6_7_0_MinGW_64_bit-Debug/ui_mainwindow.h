@@ -88,14 +88,14 @@ public:
         closeInventory->setGeometry(QRect(10, 10, 101, 41));
         inventoryText = new QTextEdit(centralwidget);
         inventoryText->setObjectName("inventoryText");
-        inventoryText->setGeometry(QRect(100, 110, 591, 441));
+        inventoryText->setGeometry(QRect(100, 70, 591, 471));
         servantText = new QTextBrowser(centralwidget);
         servantText->setObjectName("servantText");
         servantText->setGeometry(QRect(100, 110, 241, 41));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 768, 17));
+        menubar->setGeometry(QRect(0, 0, 768, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

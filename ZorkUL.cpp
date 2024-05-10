@@ -36,7 +36,7 @@ void ZorkUL::createRooms()  {
     l = new Room("L'Exit",12, false);
 
     a->setExits(b,NULL, NULL, NULL);
-    b->setExits(NULL, d, a, c);//cannot go back to a
+    b->setExits(NULL, d, a, c);
     c->setExits(f, b, NULL, NULL);
     d->setExits(NULL, e, NULL, b);
     e->setExits(h, NULL, NULL, d);
@@ -65,3 +65,4 @@ Item* ZorkUL::getCurrentItem() const{
 void ZorkUL::setCurrentItem(Item* item) {
     currentItem = item;
 }
+

@@ -10,7 +10,7 @@ private:
     string description;
 public:
     Servant(string name, string description);
-    string speak(int x) override;
+    string speak(unsigned int x) override;
     string room1();
     string room2();
     string room3();

@@ -9,6 +9,7 @@ class Character
 {
 public:
     Character();
-    virtual string speak(int x) = 0;
+    virtual string speak(unsigned int x) = 0;
+    virtual ~Character() = default;
 };
 #endif // CHARACTER_H

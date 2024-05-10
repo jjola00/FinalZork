@@ -9,7 +9,7 @@ class Item {
 private:
     string description;
     string longDescription;
-    int value;
+    unsigned int value = 3;
 
 public:
     Item(string description, int inValue, string longDescription);

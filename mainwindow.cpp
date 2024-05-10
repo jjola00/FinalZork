@@ -252,6 +252,7 @@ void MainWindow::hideUI(){
     ui->itemNotification->hide();
     ui->mapButton->hide();
     ui->itemTakeButton->hide();
+    ui->servantText->hide();
 }
 
 void MainWindow::showUI(){
@@ -264,6 +265,7 @@ void MainWindow::showUI(){
     ui->mapButton->show();
     ui->itemNotification->show();
     ui->itemTakeButton->show();
+    ui->servantText->show();
     updateBackground();
 }
 

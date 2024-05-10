@@ -12,7 +12,7 @@ class Room {
 
 private:
     string description;
-    int roomNumber;
+    unsigned int roomNumber = 4;//bit structure. Set to 4 because...
     map<string, Room*> exits;
     string exitString();
     bool hasItem;
