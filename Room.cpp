@@ -5,6 +5,11 @@ Room::Room(string description, int roomNumber, bool hasItem) {
     this->roomNumber = roomNumber;
     this->hasItem = hasItem;
 }
+Room::Room(const Room& original){
+    this->description = original.description;
+    this->roomNumber = original.roomNumber;
+    this->hasItem = original.hasItem;
+}
 string Room::getDescription() const{
     return description;
 }

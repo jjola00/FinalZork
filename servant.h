@@ -4,6 +4,8 @@
 #include "character.h"
 #include "entity.h"
 
+namespace Servant {
+
 class Servant: public Character, public Entity{
 private:
     string name;
@@ -24,4 +26,5 @@ public:
     string room11();
     string room12();
 };
+}
 #endif // SERVANT_H

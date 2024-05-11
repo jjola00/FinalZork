@@ -10,6 +10,9 @@ using namespace std;
 
 class ZorkUL {
 private:
+    vector<Room*> rooms;
+    vector<Item*> items;
+
     void createRooms();
     Room *currentRoom;
     Item *currentItem;
@@ -21,6 +24,7 @@ private:
 
 public:
     ZorkUL();
+    ~ZorkUL();
     void play();
     Room* getCurrentRoom() const;
     Item* getCurrentItem() const;

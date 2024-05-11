@@ -29,7 +29,7 @@ void MainWindow::updateRoomDescription() {
 
 void MainWindow::updateBackground() {
     int roomNumber = zork.getCurrentRoom()->getRoomNumber();
-    Servant servant("James", "Tall and quiet");
+    Servant::Servant servant("James", "Tall and quiet");
     string speech = servant.speak(roomNumber);
     QString itemString = QString::fromStdString(speech);
     ui->servantText->setText(itemString);

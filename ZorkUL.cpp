@@ -14,24 +14,41 @@ ZorkUL::ZorkUL() {
     createRooms();
 }
 
+ZorkUL::~ZorkUL() {
+    for (auto& item : items) {
+        delete item;
+    }
+
+    for (auto& room : rooms) {
+        delete room;
+    }
+}
+
 void ZorkUL::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *l;
 
+    Item *A = new Item("Painting Fragment: 1", 1, "Update Later");
+    Item *B = new Item("Painting Fragment: 2", 2, "Update Later");
+    Item *C = new Item("Painting Fragment: 3", 3, "Update Later");
+    Item *D = new Item("Painting Fragment: 4", 4, "Update Later");
+
     a = new Room("L'entree",1, false);
     b = new Room("La Chambre D'artiste",2, true);
-    b->addItem(new Item("Painting Fragment: 1", 1, "Update Later"));
+    b->addItem(A);
     c = new Room("Le Salon",3, false);
     d = new Room("La Cuisine",4, false);
     e = new Room("La Cave",5, true);
-    e->addItem(new Item("Painting Fragment: 2", 2, "Update Later"));
+    e->addItem(B);
     f = new Room("La Chambre de la Fille",6, false);
     g = new Room("??????????",7, true);
-    g->addItem(new Item("Painting Fragment: 3", 3, "Update Later"));
+    g->addItem(C);
     h = new Room("La Chambre D'hotes",8, false);
     i = new Room("La Salle de Jeux",9, false);
     j = new Room("La Chambre de Nuit",10, false);
     k = new Room("La Salle D'exposition",11, true);
-    k->addItem(new Item("Painting Fragment: 4", 4, "Update Later"));
+    k->addItem(D);
+
+
 
     l = new Room("L'Exit",12, false);
 
@@ -49,6 +66,9 @@ void ZorkUL::createRooms()  {
     l->setExits(NULL, NULL, k, NULL);
 
     currentRoom = a;
+    rooms = {a, b, c, d, e, f, g, h, i, j, k, l};
+    items = {A, B, C, D};
+
 }
 
 

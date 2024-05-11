@@ -13,6 +13,7 @@ private:
 
 public:
     Item(string description, int inValue, string longDescription);
+    Item(const Item& original);
     int getValue() const;
     string getLongDescription() const;
     string getDescription() const;

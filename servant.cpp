@@ -1,6 +1,8 @@
 #include "servant.h"
 #include "ZorkUL.h"
 
+namespace Servant{
+
 Servant::Servant(string name, string description)
     : Entity(name, description)
 {
@@ -96,6 +98,7 @@ string Servant::room11(){
 
 string Servant::room12(){
     return "This is L'Exit. Are you sure you want to leave?";
+}
 }
 
 

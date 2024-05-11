@@ -6,7 +6,11 @@ Item::Item (string inDescription, int inValue, string inLongDescription) {
     value = inValue;
     longDescription = inLongDescription;
 }
-
+Item::Item(const Item& original){
+    this->description = original.description;
+    this->value = original.value;
+    this->longDescription = original.longDescription;
+}
 void Item::setValue(int inValue)
 {
     if (inValue > 9999 || inValue < 0)

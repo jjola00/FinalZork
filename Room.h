@@ -21,6 +21,7 @@ private:
 public:
     int numberOfItems();
     Room(string description, int number, bool hasItem);
+    Room(const Room& original);
     Room* nextRoom(string direction);
     string displayItem();
     int isItemInRoom(string inString);

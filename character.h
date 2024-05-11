@@ -7,9 +7,11 @@ using namespace std;
 
 class Character
 {
+protected:
+    virtual string speak(unsigned int x) = 0;
+
 public:
     Character();
-    virtual string speak(unsigned int x) = 0;
     virtual ~Character() = default;
 };
 #endif // CHARACTER_H
