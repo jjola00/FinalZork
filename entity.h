@@ -8,8 +8,17 @@ class Entity
 private:
     string name;
     string description;
+    int value;
 public:
-    Entity(string name, string description);
+    Entity(string name, string description, int value);
+
+    string getName() const;
+    string getDescription() const;
+    int getValue() const;
+
+    void setName(string name);
+    void setDescription(string description);
+    void setValue(int value);
 };
 
 #endif // ENTITY_H

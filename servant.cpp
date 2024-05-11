@@ -3,12 +3,8 @@
 
 namespace Servant{
 
-Servant::Servant(string name, string description)
-    : Entity(name, description)
-{
-    this->name = name;
-    this->description = description;
-}
+Servant::Servant(string name, string description, int value)
+    : Entity(name, description, value){}
 
 string Servant::speak(unsigned int x = 4){
     string dialogue;

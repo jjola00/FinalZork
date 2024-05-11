@@ -7,11 +7,8 @@
 namespace Servant {
 
 class Servant: public Character, public Entity{
-private:
-    string name;
-    string description;
 public:
-    Servant(string name, string description);
+    Servant(string name, string description, int value);
     string speak(unsigned int x) override;
     string room1();
     string room2();
