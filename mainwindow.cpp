@@ -22,13 +22,13 @@ void MainWindow::createRooms()
     zork.createRooms();
 }
 void MainWindow::updateRoomDescription() {
-    std::string name = zork.getCurrentRoom()->getDescription();
+    std::string name = zork.getCurrentRoom()->getName();
     QString description = QString::fromStdString(name);
     ui->TestText->setText(description);
 }
 
 void MainWindow::updateBackground() {
-    int roomNumber = zork.getCurrentRoom()->getRoomNumber();
+    int roomNumber = zork.getCurrentRoom()->getValue();
     Servant::Servant servant("James", "Tall and quiet", 1);
     string speech = servant.speak(roomNumber);
     QString itemString = QString::fromStdString(speech);
@@ -189,7 +189,7 @@ void MainWindow::on_addToInventoryButton_clicked()
 {
     string description = zork.getCurrentItem()->getName();
     string longDescription = zork.getCurrentItem()->getDescription();
-    string roomName = zork.getCurrentRoom()->getDescription();
+    string roomName = zork.getCurrentRoom()->getName();
     inventory.addItem(description, longDescription, roomName);
     showUI();
     takeItem();

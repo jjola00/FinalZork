@@ -1,11 +1,12 @@
 #include "entity.h"
 
 
-Entity::Entity(string name, string description, int value) {
-    this->name = name;
-    this->description = description;
-    this->value = value;
-}
+Entity::Entity(string name, string description, int value)
+    : name(name), description(description), value(value) {}
+
+Entity::Entity(string name, int value)
+    : name(name), value(value) {}
+
 string Entity::getName() const{
     return name;
 }

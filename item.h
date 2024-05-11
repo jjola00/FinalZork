@@ -7,8 +7,6 @@
 using namespace std;
 
 class Item : public Entity {
-private:
-    string longDescription;
 public:
     Item(string description, int inValue, string longDescription);
     Item(const Item& original);

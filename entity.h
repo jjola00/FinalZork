@@ -9,8 +9,10 @@ private:
     string name;
     string description;
     unsigned int value = 4;
+    bool has;
 public:
     Entity(string name, string description, int value);
+    Entity(string name, int value);
 
     string getName() const;
     string getDescription() const;

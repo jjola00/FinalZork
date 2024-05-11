@@ -1,21 +1,10 @@
 #include "Room.h"
 
-Room::Room(string description, int roomNumber, bool hasItem) {
-    this->description = description;
-    this->roomNumber = roomNumber;
-    this->hasItem = hasItem;
-}
-Room::Room(const Room& original){
-    this->description = original.description;
-    this->roomNumber = original.roomNumber;
-    this->hasItem = original.hasItem;
-}
-string Room::getDescription() const{
-    return description;
-}
-int Room::getRoomNumber() const{
-    return roomNumber;
-}
+Room::Room(string description, int roomNumber, bool hasItem)
+    : Entity(description, roomNumber), hasItem(hasItem) {}
+
+Room::Room(const Room& original) : Entity(original){}
+
 Item* Room::getItem() const{
     return item;
 }
@@ -33,12 +22,12 @@ string Room::exitString() {
     string returnString = "\nexits =";
     for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
         // Loop through map
-        returnString += "  " + i->first;	// access the "first" element of the pair (direction as a string)
+        returnString += "  " + i->first;
     return returnString;
 }
 
 Room* Room::nextRoom(string direction) {
-    map<string, Room*>::iterator next = exits.find(direction); //returns an iterator for the "pair"
+    map<string, Room*>::iterator next = exits.find(direction);
     if (next == exits.end())
         return NULL;
     return next->second;
