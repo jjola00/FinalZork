@@ -8,7 +8,7 @@ class Entity
 private:
     string name;
     string description;
-    int value;
+    unsigned int value = 4;
 public:
     Entity(string name, string description, int value);
 

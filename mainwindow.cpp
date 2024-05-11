@@ -187,8 +187,8 @@ void MainWindow::on_itemTakeButton_clicked()
 
 void MainWindow::on_addToInventoryButton_clicked()
 {
-    string description = zork.getCurrentItem()->getDescription();
-    string longDescription = zork.getCurrentItem()->getLongDescription();
+    string description = zork.getCurrentItem()->getName();
+    string longDescription = zork.getCurrentItem()->getDescription();
     string roomName = zork.getCurrentRoom()->getDescription();
     inventory.addItem(description, longDescription, roomName);
     showUI();
