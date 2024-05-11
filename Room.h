@@ -15,6 +15,11 @@ private:
     bool hasItem;
     Item* item;
 
+    union roomNumber{
+        int intValue;
+        float floatValue;
+    };
+
 public:
     Room(string description, int number, bool hasItem);
     Room(const Room& original);

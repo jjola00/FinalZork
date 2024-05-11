@@ -6,11 +6,14 @@
 #include <QLineEdit>
 #include <QTimer>
 
+#define MAX_ROOMS (12)
+#define MAX_ITEMS (4)
+
 using namespace std;
 #include "ZorkUL.h"
 
 
-ZorkUL::ZorkUL() {
+ZorkUL::ZorkUL() : rooms(MAX_ROOMS), items(MAX_ITEMS) {
     createRooms();
 }
 
@@ -47,9 +50,6 @@ void ZorkUL::createRooms()  {
     j = new Room("La Chambre de Nuit",10, false);
     k = new Room("La Salle D'exposition",11, true);
     k->addItem(D);
-
-
-
     l = new Room("L'Exit",12, false);
 
     a->setExits(b,NULL, NULL, NULL);
