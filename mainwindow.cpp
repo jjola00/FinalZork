@@ -205,7 +205,8 @@ void MainWindow::setUI(){
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::takeItem);
 
-    QString arrowStyleSheet = "QPushButton { color: white; }";
+    QString arrowStyleSheet = "QPushButton { background-color: black; color: white; font-family: "
+                              "Bell MT; font-size: 10pt; font-weight: bold; }";
     ui->upButton->setStyleSheet(arrowStyleSheet);
     ui->downButton->setStyleSheet(arrowStyleSheet);
     ui->leftButton->setStyleSheet(arrowStyleSheet);

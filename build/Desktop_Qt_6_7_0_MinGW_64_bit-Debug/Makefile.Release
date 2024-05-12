@@ -332,6 +332,7 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../ZorkUL.h \
 		../../Room.h \
 		../../item.h \
+		../../entity.h \
 		release/moc_predefs.h \
 		C:/Qt/6.7.0/mingw_64/bin/moc.exe
 	C:\Qt\6.7.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/23373326/MyRepos/Zorkers/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.7.0/mingw_64/mkspecs/win32-g++ -IC:/Users/23373326/MyRepos/Zorkers -IC:/Qt/6.7.0/mingw_64/include -IC:/Qt/6.7.0/mingw_64/include/QtWidgets -IC:/Qt/6.7.0/mingw_64/include/QtGui -IC:/Qt/6.7.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o release\moc_mainwindow.cpp
@@ -361,11 +362,13 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 release/Inventory.o: ../../Inventory.cpp ../../Inventory.h \
 		../../Room.h \
-		../../item.h
+		../../item.h \
+		../../entity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Inventory.o ..\..\Inventory.cpp
 
 release/Room.o: ../../Room.cpp ../../Room.h \
-		../../item.h
+		../../item.h \
+		../../entity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Room.o ..\..\Room.cpp
 
 release/ZorkUL.o: ../../ZorkUL.cpp C:/Qt/6.7.0/mingw_64/include/QtWidgets/QApplication \
@@ -580,7 +583,8 @@ release/ZorkUL.o: ../../ZorkUL.cpp C:/Qt/6.7.0/mingw_64/include/QtWidgets/QAppli
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qbasictimer.h \
 		../../ZorkUL.h \
 		../../Room.h \
-		../../item.h
+		../../item.h \
+		../../entity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ZorkUL.o ..\..\ZorkUL.cpp
 
 release/character.o: ../../character.cpp ../../character.h
@@ -592,16 +596,15 @@ release/entity.o: ../../entity.cpp ../../entity.h
 release/gamemanager.o: ../../gamemanager.cpp ../../gamemanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\gamemanager.o ..\..\gamemanager.cpp
 
-release/item.o: ../../item.cpp ../../item.h
+release/item.o: ../../item.cpp ../../item.h \
+		../../entity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\item.o ..\..\item.cpp
 
-release/main.o: ../../main.cpp ../../ZorkUL.h \
-		../../Room.h \
-		../../item.h \
-		C:/Qt/6.7.0/mingw_64/include/QtCore/QObject \
-		C:/Qt/6.7.0/mingw_64/include/QtCore/qobject.h \
-		C:/Qt/6.7.0/mingw_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/6.7.0/mingw_64/include/QtCore/qnamespace.h \
+release/main.o: ../../main.cpp ../../mainwindow.h \
+		C:/Qt/6.7.0/mingw_64/include/QtWidgets/QMainWindow \
+		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qmainwindow.h \
+		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/6.7.0/mingw_64/include/QtGui/qtguiglobal.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qglobal.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qtversionchecks.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qtconfiginclude.h \
@@ -646,9 +649,19 @@ release/main.o: ../../main.cpp ../../ZorkUL.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qtresource.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qttranslation.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qversiontagging.h \
+		C:/Qt/6.7.0/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Qt/6.7.0/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qwidget.h \
+		C:/Qt/6.7.0/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/qnamespace.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qtmetamacros.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Qt/6.7.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/qobject.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qstring.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qchar.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qstringview.h \
@@ -698,18 +711,6 @@ release/main.o: ../../main.cpp ../../ZorkUL.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qscopeguard.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qobject_impl.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qbindingstorage.h \
-		../../mainwindow.h \
-		C:/Qt/6.7.0/mingw_64/include/QtWidgets/QMainWindow \
-		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qmainwindow.h \
-		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/6.7.0/mingw_64/include/QtGui/qtguiglobal.h \
-		C:/Qt/6.7.0/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.7.0/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qwidget.h \
-		C:/Qt/6.7.0/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.7.0/mingw_64/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qmargins.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/q23utility.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qaction.h \
@@ -760,6 +761,7 @@ release/main.o: ../../main.cpp ../../ZorkUL.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qinputdevice.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qscreen.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QList \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/QObject \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QRect \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QSize \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QSizeF \
@@ -787,6 +789,10 @@ release/main.o: ../../main.cpp ../../ZorkUL.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtabwidget.h \
+		../../ZorkUL.h \
+		../../Room.h \
+		../../item.h \
+		../../entity.h \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp
@@ -983,10 +989,10 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../ZorkUL.h \
 		../../Room.h \
 		../../item.h \
+		../../entity.h \
 		../../Inventory.h \
 		../../servant.h \
 		../../character.h \
-		../../entity.h \
 		ui_mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/QApplication \

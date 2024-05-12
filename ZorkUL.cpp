@@ -30,10 +30,14 @@ ZorkUL::~ZorkUL() {
 void ZorkUL::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *l;
 
-    Item *A = new Item("Painting Fragment: 1", 1, "Update Later");
-    Item *B = new Item("Painting Fragment: 2", 2, "Update Later");
-    Item *C = new Item("Painting Fragment: 3", 3, "Update Later");
-    Item *D = new Item("Painting Fragment: 4", 4, "Update Later");
+    Item *A = new Item("Painting Fragment: 1", 1, "'The portrait painted by the Artist. "
+                        "Why was it unfinished? Or did another entity alter the image?");
+    Item *B = new Item("Painting Fragment: 2", 2, "'The Wife held at knife point. "
+                        "What was the reason? And what was the outcome?'");
+    Item *C = new Item("Painting Fragment: 3", 3, "'The Daughter weeping in the unknown room. "
+                        "Is she reading, or writing, her final words?'");
+    Item *D = new Item("Painting Fragment: 4", 4, "'A battle between life, and death itself. "
+                        "Who was the victor?' ");
 
     a = new Room("L'entree",1, false);
     b = new Room("La Chambre D'artiste",2, true);
