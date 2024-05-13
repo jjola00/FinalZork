@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -39,6 +40,7 @@ public:
     QPushButton *closeInventory;
     QTextEdit *inventoryText;
     QTextBrowser *servantText;
+    QLabel *bgLabel;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -46,7 +48,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(768, 619);
+        MainWindow->resize(761, 614);
         MainWindow->setWindowOpacity(1.000000000000000);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -73,13 +75,13 @@ public:
         closeMapButton->setGeometry(QRect(680, 10, 80, 21));
         TestText = new QTextEdit(centralwidget);
         TestText->setObjectName("TestText");
-        TestText->setGeometry(QRect(270, 10, 231, 41));
+        TestText->setGeometry(QRect(20, 511, 381, 51));
         itemNotification = new QTextEdit(centralwidget);
         itemNotification->setObjectName("itemNotification");
-        itemNotification->setGeometry(QRect(50, 534, 241, 31));
+        itemNotification->setGeometry(QRect(10, 314, 261, 31));
         itemTakeButton = new QPushButton(centralwidget);
         itemTakeButton->setObjectName("itemTakeButton");
-        itemTakeButton->setGeometry(QRect(639, 10, 121, 41));
+        itemTakeButton->setGeometry(QRect(619, 10, 111, 41));
         addToInventoryButton = new QPushButton(centralwidget);
         addToInventoryButton->setObjectName("addToInventoryButton");
         addToInventoryButton->setGeometry(QRect(640, 10, 121, 41));
@@ -92,10 +94,13 @@ public:
         servantText = new QTextBrowser(centralwidget);
         servantText->setObjectName("servantText");
         servantText->setGeometry(QRect(0, 80, 381, 221));
+        bgLabel = new QLabel(centralwidget);
+        bgLabel->setObjectName("bgLabel");
+        bgLabel->setGeometry(QRect(-4, -1, 771, 611));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 768, 17));
+        menubar->setGeometry(QRect(0, 0, 761, 17));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -119,6 +124,7 @@ public:
         itemTakeButton->setText(QCoreApplication::translate("MainWindow", "Take The Painting.", nullptr));
         addToInventoryButton->setText(QCoreApplication::translate("MainWindow", "Add to Inventory", nullptr));
         closeInventory->setText(QCoreApplication::translate("MainWindow", "Close Inventory", nullptr));
+        bgLabel->setText(QString());
     } // retranslateUi
 
 };

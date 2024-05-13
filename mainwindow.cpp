@@ -4,11 +4,13 @@
 #include "servant.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include <QPixmap>
 
 using namespace std;
 ZorkUL zork;
 Inventory inventory;
 
+QString bgImage;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -35,8 +37,9 @@ void MainWindow::updateBackground() {
     ui->servantText->setText(itemString);
 
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/%1.png").arg(roomNumber);
-    QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
-    this->setStyleSheet(styleSheet);
+    QPixmap pix(bgImage);
+    ui->bgLabel->setPixmap(pix);
+    ui->bgLabel->lower();
 }
 
 MainWindow::~MainWindow()
@@ -51,10 +54,10 @@ void MainWindow::on_mapButton_clicked()
     ui->closeMapButton->show();
 
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/map.jpg");
-    QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
-    this->setStyleSheet(styleSheet);
+    QPixmap pix(bgImage);
+    ui->bgLabel->setPixmap(pix);
+    ui->bgLabel->lower();
 }
-
 
 void MainWindow::on_upButton_clicked()
 {
@@ -124,8 +127,10 @@ void MainWindow::on_Inventory_clicked()
     ui->closeInventory->show();
     hideUI();
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/item.png");
-    QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
-    this->setStyleSheet(styleSheet);
+    QPixmap pix(bgImage);
+    ui->bgLabel->setPixmap(pix);
+    ui->bgLabel->lower();
+
     ui->inventoryText->show();
     string inventoryString = inventory.toString(inventory.getItemList());
     QString invString = QString::fromStdString(inventoryString);
@@ -134,14 +139,16 @@ void MainWindow::on_Inventory_clicked()
 
 void MainWindow::on_closeInventory_clicked()
 {
-    showUI();
+    updateBackground();
     ui->inventoryText->hide();
-    takeItem();
     ui->closeInventory->hide();
+    showUI();
+    takeItem();
 }
 
 void MainWindow::on_closeMapButton_clicked()
 {
+    updateBackground();
     showUI();
     takeItem();
     ui->closeMapButton->hide();
@@ -180,8 +187,9 @@ void MainWindow::on_itemTakeButton_clicked()
     Item* currentItem = zork.getCurrentItem();
     if (currentItem != nullptr) {
         QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/Painting%1.png").arg(currentItem->getValue());
-        QString styleSheet = QString("background-image: url(%1);").arg(bgImage);
-        this->setStyleSheet(styleSheet);
+        QPixmap pix(bgImage);
+        ui->bgLabel->setPixmap(pix);
+        ui->bgLabel->lower();
     }
 }
 
@@ -191,9 +199,11 @@ void MainWindow::on_addToInventoryButton_clicked()
     string longDescription = zork.getCurrentItem()->getDescription();
     string roomName = zork.getCurrentRoom()->getName();
     inventory.addItem(description, longDescription, roomName);
-    showUI();
-    takeItem();
     zork.setCurrentItem(nullptr);
+
+    showUI();
+    ui->itemTakeButton->hide();
+    updateBackground();
     ui->addToInventoryButton->hide();
 }
 
@@ -229,11 +239,10 @@ void MainWindow::setUI(){
     ui->itemNotification->setReadOnly(true);
     ui->inventoryText->setReadOnly(true);
 
-
-    ui->TestText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt;");
-    ui->inventoryText->setStyleSheet("color: white; font-family: STLiti; font-size: 19pt");
-    ui->servantText->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
-    ui->itemNotification->setStyleSheet("color: white; font-family: Bell MT; font-size: 13pt");
+    ui->TestText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt;");
+    ui->inventoryText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 19pt;");
+    ui->servantText->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt;");
+    ui->itemNotification->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt;");
 
     ui->TestText->setFrameStyle(QFrame::NoFrame);
     ui->servantText->setFrameStyle(QFrame::NoFrame);
@@ -267,6 +276,5 @@ void MainWindow::showUI(){
     ui->itemNotification->show();
     ui->itemTakeButton->show();
     ui->servantText->show();
-    updateBackground();
 }
 

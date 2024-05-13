@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>768</width>
-    <height>619</height>
+    <width>761</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -111,19 +111,19 @@
    <widget class="QTextEdit" name="TestText">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>10</y>
-      <width>231</width>
-      <height>41</height>
+      <x>20</x>
+      <y>511</y>
+      <width>381</width>
+      <height>51</height>
      </rect>
     </property>
    </widget>
    <widget class="QTextEdit" name="itemNotification">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>534</y>
-      <width>241</width>
+      <x>10</x>
+      <y>314</y>
+      <width>261</width>
       <height>31</height>
      </rect>
     </property>
@@ -131,9 +131,9 @@
    <widget class="QPushButton" name="itemTakeButton">
     <property name="geometry">
      <rect>
-      <x>639</x>
+      <x>619</x>
       <y>10</y>
-      <width>121</width>
+      <width>111</width>
       <height>41</height>
      </rect>
     </property>
@@ -187,13 +187,26 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="bgLabel">
+    <property name="geometry">
+     <rect>
+      <x>-4</x>
+      <y>-1</y>
+      <width>771</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>768</width>
+     <width>761</width>
      <height>17</height>
     </rect>
    </property>
