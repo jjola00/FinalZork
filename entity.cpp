@@ -7,6 +7,8 @@ Entity::Entity(string name, string description, int value)
 Entity::Entity(string name, int value)
     : name(name), value(value) {}
 
+Entity::Entity(){}
+
 string Entity::getName() const{
     return name;
 }

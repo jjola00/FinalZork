@@ -1,7 +1,7 @@
 #include "Room.h"
 
-Room::Room(string description, int roomNumber, bool hasItem)
-    : Entity(description, roomNumber), hasItem(hasItem) {}
+Room::Room(string description, string longDescription, int roomNumber, bool hasItem)
+    : Entity(description, longDescription, roomNumber), hasItem(hasItem) {}
 
 Room::Room(const Room& original) : Entity(original){}
 

@@ -4,11 +4,10 @@
 #include "character.h"
 #include "entity.h"
 
-namespace Servant {
-
 class Servant: public Character, public Entity{
 public:
     Servant(string name, string description, int value);
+    Servant();
     string speak(unsigned int x) override;
     string room1();
     string room2();
@@ -23,5 +22,5 @@ public:
     string room11();
     string room12();
 };
-}
+
 #endif // SERVANT_H

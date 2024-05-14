@@ -13,6 +13,7 @@ private:
 public:
     Entity(string name, string description, int value);
     Entity(string name, int value);
+    Entity();
 
     string getName() const;
     string getDescription() const;

@@ -5,6 +5,7 @@
 #include <QTextEdit>
 #include <QLineEdit>
 #include <QTimer>
+#include "servant.h"
 
 #define MAX_ROOMS (12)
 #define MAX_ITEMS (4)
@@ -28,6 +29,7 @@ ZorkUL::~ZorkUL() {
 }
 
 void ZorkUL::createRooms()  {
+    Servant servant;
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *l;
     Item *A, *B, *C, *D;
 
@@ -40,22 +42,22 @@ void ZorkUL::createRooms()  {
     D = new Item("Painting Fragment: 4", 4, "'A battle between life, and death itself. "
                         "Who was the victor?' ");
 
-    a = new Room("L'entree",1, false);
-    b = new Room("La Chambre D'artiste",2, true);
+    a = new Room("L'entree", servant.room1(), 1,false);
+    b = new Room("La Chambre D'artiste",servant.room2(), 2, true);
     b->addItem(A);
-    c = new Room("Le Salon",3, false);
-    d = new Room("La Cuisine",4, false);
-    e = new Room("La Cave",5, true);
+    c = new Room("Le Salon", servant.room3(), 3, false);
+    d = new Room("La Cuisine", servant.room4(), 4, false);
+    e = new Room("La Cave", servant.room5(), 5, true);
     e->addItem(B);
-    f = new Room("La Chambre de la Fille",6, false);
-    g = new Room("??????????",7, true);
+    f = new Room("La Chambre de la Fille", servant.room6(), 6, false);
+    g = new Room("??????????", servant.room7(), 7, true);
     g->addItem(C);
-    h = new Room("La Chambre D'hotes",8, false);
-    i = new Room("La Salle de Jeux",9, false);
-    j = new Room("La Chambre de Nuit",10, false);
-    k = new Room("La Salle D'exposition",11, true);
+    h = new Room("La Chambre D'hotes", servant.room8(), 8, false);
+    i = new Room("La Salle de Jeux", servant.room9(), 9, false);
+    j = new Room("La Chambre de Nuit", servant.room10(), 10, false);
+    k = new Room("La Salle D'exposition", servant.room11(), 11, true);
     k->addItem(D);
-    l = new Room("L'Exit",12, false);
+    l = new Room("L'Exit", servant.room12(), 12, false);
 
     a->setExits(b,NULL, NULL, NULL);
     b->setExits(NULL, d, a, c);

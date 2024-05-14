@@ -1,10 +1,13 @@
 #include "mainwindow.h"
 #include "Inventory.h"
 #include "ZorkUL.h"
-#include "servant.h"
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <QPixmap>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QTextEdit>
+#include <QTimer>
 
 using namespace std;
 ZorkUL zork;
@@ -28,19 +31,33 @@ void MainWindow::updateRoomDescription() {
     QString description = QString::fromStdString(name);
     ui->TestText->setText(description);
 }
-
 void MainWindow::updateBackground() {
+    ui->servantText->clear();
     int roomNumber = zork.getCurrentRoom()->getValue();
-    Servant::Servant servant("James", "Tall and quiet", 1);
-    string speech = servant.speak(roomNumber);
+    string speech = zork.getCurrentRoom()->getDescription();
     QString itemString = QString::fromStdString(speech);
-    ui->servantText->setText(itemString);
+
+    QStringList words = itemString.split(" ");
+
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, [=]() {
+        static int index = 0;
+        if (index < words.size()) {
+            ui->servantText->insertPlainText(words[index] + " ");
+            ++index;
+        } else {
+            timer->stop();
+        }
+    });
+    timer->start(50);
 
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/%1.png").arg(roomNumber);
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
+    ui->servantText->show();
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -233,21 +250,21 @@ void MainWindow::setUI(){
     ui->addToInventoryButton->hide();
     ui->closeInventory->hide();
     ui->inventoryText->hide();
+    ui->blackScreen->hide();
 
     ui->TestText->setReadOnly(true);
     ui->servantText->setReadOnly(true);
     ui->itemNotification->setReadOnly(true);
     ui->inventoryText->setReadOnly(true);
+    ui->blackScreen->setReadOnly(true);
 
-    ui->TestText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt;");
-    ui->inventoryText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 19pt;");
-    ui->servantText->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt;");
-    ui->itemNotification->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt;");
+    ui->TestText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
+    ui->inventoryText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 19pt; border: none;");
+    ui->servantText->setStyleSheet("background-color: black; color: cyan; font-family: Courier; font-size: 13pt; border: none;");
+    ui->itemNotification->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt; border: none;");
+    ui->blackScreen->setStyleSheet("background-color: black; border: none;");
 
-    ui->TestText->setFrameStyle(QFrame::NoFrame);
-    ui->servantText->setFrameStyle(QFrame::NoFrame);
-    ui->inventoryText->setFrameStyle(QFrame::NoFrame);
-    ui->itemNotification->setFrameStyle(QFrame::NoFrame);
+    ui->servantText->lower();
 
     updateBackground();
 }
@@ -263,6 +280,7 @@ void MainWindow::hideUI(){
     ui->mapButton->hide();
     ui->itemTakeButton->hide();
     ui->servantText->hide();
+    ui->blackScreen->show();
 }
 
 void MainWindow::showUI(){
@@ -276,5 +294,6 @@ void MainWindow::showUI(){
     ui->itemNotification->show();
     ui->itemTakeButton->show();
     ui->servantText->show();
+    ui->blackScreen->hide();
 }
 

@@ -21,7 +21,7 @@ private:
     };
 
 public:
-    Room(string description, int number, bool hasItem);
+    Room(string description, string longDescription, int number, bool hasItem);
     Room(const Room& original);
     Room* nextRoom(string direction);
     void addItem(Item *inItem);

@@ -41,6 +41,7 @@ public:
     QTextEdit *inventoryText;
     QTextBrowser *servantText;
     QLabel *bgLabel;
+    QTextEdit *blackScreen;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -48,7 +49,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(761, 614);
+        MainWindow->resize(1012, 614);
         MainWindow->setWindowOpacity(1.000000000000000);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -57,22 +58,22 @@ public:
         Inventory->setGeometry(QRect(10, 10, 101, 41));
         mapButton = new QPushButton(centralwidget);
         mapButton->setObjectName("mapButton");
-        mapButton->setGeometry(QRect(550, 410, 61, 51));
+        mapButton->setGeometry(QRect(860, 410, 61, 51));
         downButton = new QPushButton(centralwidget);
         downButton->setObjectName("downButton");
-        downButton->setGeometry(QRect(550, 470, 61, 51));
+        downButton->setGeometry(QRect(860, 470, 61, 51));
         leftButton = new QPushButton(centralwidget);
         leftButton->setObjectName("leftButton");
-        leftButton->setGeometry(QRect(470, 410, 61, 51));
+        leftButton->setGeometry(QRect(790, 410, 61, 51));
         upButton = new QPushButton(centralwidget);
         upButton->setObjectName("upButton");
-        upButton->setGeometry(QRect(550, 350, 61, 51));
+        upButton->setGeometry(QRect(860, 350, 61, 51));
         rightButton = new QPushButton(centralwidget);
         rightButton->setObjectName("rightButton");
-        rightButton->setGeometry(QRect(630, 410, 61, 51));
+        rightButton->setGeometry(QRect(930, 410, 61, 51));
         closeMapButton = new QPushButton(centralwidget);
         closeMapButton->setObjectName("closeMapButton");
-        closeMapButton->setGeometry(QRect(680, 10, 80, 21));
+        closeMapButton->setGeometry(QRect(669, 21, 81, 31));
         TestText = new QTextEdit(centralwidget);
         TestText->setObjectName("TestText");
         TestText->setGeometry(QRect(20, 511, 381, 51));
@@ -93,14 +94,17 @@ public:
         inventoryText->setGeometry(QRect(170, 10, 591, 561));
         servantText = new QTextBrowser(centralwidget);
         servantText->setObjectName("servantText");
-        servantText->setGeometry(QRect(0, 80, 381, 221));
+        servantText->setGeometry(QRect(760, 1, 261, 599));
         bgLabel = new QLabel(centralwidget);
         bgLabel->setObjectName("bgLabel");
-        bgLabel->setGeometry(QRect(-4, -1, 771, 611));
+        bgLabel->setGeometry(QRect(-4, -4, 771, 611));
+        blackScreen = new QTextEdit(centralwidget);
+        blackScreen->setObjectName("blackScreen");
+        blackScreen->setGeometry(QRect(760, 1, 261, 599));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 761, 17));
+        menubar->setGeometry(QRect(0, 0, 1012, 17));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
