@@ -31,26 +31,14 @@ void MainWindow::updateRoomDescription() {
     QString description = QString::fromStdString(name);
     ui->TestText->setText(description);
 }
-void MainWindow::updateBackground() {
+void MainWindow::updateSpeech(){
     ui->servantText->clear();
-    int roomNumber = zork.getCurrentRoom()->getValue();
-    string speech = zork.getCurrentRoom()->getDescription();
+    std::string speech = zork.getCurrentRoom()->getDescription();
     QString itemString = QString::fromStdString(speech);
-
-    QStringList words = itemString.split(" ");
-
-    QTimer* timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, [=]() {
-        static int index = 0;
-        if (index < words.size()) {
-            ui->servantText->insertPlainText(words[index] + " ");
-            ++index;
-        } else {
-            timer->stop();
-        }
-    });
-    timer->start(50);
-
+    ui->servantText->setPlainText(itemString);
+}
+void MainWindow::updateBackground() {
+    int roomNumber = zork.getCurrentRoom()->getValue();
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/%1.png").arg(roomNumber);
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
@@ -231,6 +219,7 @@ void MainWindow::setUI(){
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::itemNotify);
     connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::takeItem);
+    connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateSpeech);
 
     QString arrowStyleSheet = "QPushButton { background-color: black; color: white; font-family: "
                               "Bell MT; font-size: 10pt; font-weight: bold; }";
@@ -260,13 +249,15 @@ void MainWindow::setUI(){
 
     ui->TestText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
     ui->inventoryText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 19pt; border: none;");
-    ui->servantText->setStyleSheet("background-color: black; color: cyan; font-family: Courier; font-size: 13pt; border: none;");
+    ui->servantText->setStyleSheet("background-color: black; color: cyan; font-family: Courier; font-size: 9pt; border: none;");
     ui->itemNotification->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt; border: none;");
     ui->blackScreen->setStyleSheet("background-color: black; border: none;");
 
     ui->servantText->lower();
 
     updateBackground();
+    updateSpeech();
+    updateRoomDescription();
 }
 
 void MainWindow::hideUI(){

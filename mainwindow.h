@@ -58,6 +58,8 @@ private slots:
 
     void on_closeInventory_clicked();
 
+    void updateSpeech();
+
 signals:
     void currentRoomChanged();
 

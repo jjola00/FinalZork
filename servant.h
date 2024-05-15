@@ -4,23 +4,25 @@
 #include "character.h"
 #include "entity.h"
 
+namespace Servant {
+
+
 class Servant: public Character, public Entity{
 public:
     Servant(string name, string description, int value);
     Servant();
-    string speak(unsigned int x) override;
-    string room1();
-    string room2();
-    string room3();
-    string room4();
-    string room5();
-    string room6();
-    string room7();
-    string room8();
-    string room9();
-    string room10();
-    string room11();
-    string room12();
+    string room1() override;
+    string room2() override;
+    string room3() override;
+    string room4() override;
+    string room5() override;
+    string room6() override;
+    string room7() override;
+    string room8() override;
+    string room9() override;
+    string room10() override;
+    string room11() override;
+    string room12() override;
 };
-
+}
 #endif // SERVANT_H

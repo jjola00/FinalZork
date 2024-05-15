@@ -94,7 +94,7 @@ public:
         inventoryText->setGeometry(QRect(170, 10, 591, 561));
         servantText = new QTextBrowser(centralwidget);
         servantText->setObjectName("servantText");
-        servantText->setGeometry(QRect(760, 1, 261, 599));
+        servantText->setGeometry(QRect(760, 1, 255, 599));
         bgLabel = new QLabel(centralwidget);
         bgLabel->setObjectName("bgLabel");
         bgLabel->setGeometry(QRect(-4, -4, 771, 611));
