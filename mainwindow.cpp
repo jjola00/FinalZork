@@ -22,10 +22,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setUI();
 }
-void MainWindow::createRooms()
-{
-    zork.createRooms();
-}
 void MainWindow::updateRoomDescription() {
     std::string name = zork.getCurrentRoom()->getName();
     QString description = QString::fromStdString(name);
@@ -44,6 +40,7 @@ void MainWindow::updateBackground() {
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
     ui->servantText->show();
+    if(roomNumber == 12)ui->endingButton->show();
 }
 
 
@@ -212,6 +209,63 @@ void MainWindow::on_addToInventoryButton_clicked()
     ui->addToInventoryButton->hide();
 }
 
+void MainWindow::on_endingButton_clicked()
+{
+    hideUI();
+    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/ending.png");
+    QPixmap pix(bgImage);
+    ui->bgLabel->setPixmap(pix);
+    ui->bgLabel->lower();
+    ui->endingButton->hide();
+    ui->endingText->show();
+    string* text = zork.getQuestionList();
+    QString endText = QString::fromStdString(text[endingCount]);
+    ui->endingText->setPlainText(endText);
+    ui->artistButton->show();
+    ui->motherButton->show();
+    ui->daughterButton->show();
+}
+
+void MainWindow::on_artistButton_clicked()
+{
+    endingCount++;
+    ui->artistButton->hide();
+    string* text = zork.getQuestionList();
+    QString endText = QString::fromStdString(text[endingCount]);
+    ui->endingText->setPlainText(endText);
+    endingScreen();
+}
+
+
+void MainWindow::on_daughterButton_clicked()
+{
+    endingCount++;
+    ui->daughterButton->hide();
+    string* text = zork.getQuestionList();
+    QString endText = QString::fromStdString(text[endingCount]);
+    ui->endingText->setPlainText(endText);
+    endingScreen();
+}
+
+
+void MainWindow::on_motherButton_clicked()
+{
+    endingCount++;
+    ui->motherButton->hide();
+    string* text = zork.getQuestionList();
+    QString endText = QString::fromStdString(text[endingCount]);
+    ui->endingText->setPlainText(endText);
+    endingScreen();
+}
+
+void MainWindow::endingScreen(){
+    if(endingCount == 3){
+        QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/final.png");
+        QPixmap pix(bgImage);
+        ui->bgLabel->setPixmap(pix);
+    }
+}
+
 void MainWindow::setUI(){
     connect(ui->mapButton, &QPushButton::clicked, this, &MainWindow::on_mapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateRoomDescription);
@@ -240,17 +294,24 @@ void MainWindow::setUI(){
     ui->closeInventory->hide();
     ui->inventoryText->hide();
     ui->blackScreen->hide();
+    ui->endingButton->hide();
+    ui->endingText->hide();
+    ui->artistButton->hide();
+    ui->motherButton->hide();
+    ui->daughterButton->hide();
 
     ui->TestText->setReadOnly(true);
     ui->servantText->setReadOnly(true);
     ui->itemNotification->setReadOnly(true);
     ui->inventoryText->setReadOnly(true);
     ui->blackScreen->setReadOnly(true);
+    ui->endingText->setReadOnly(true);
 
     ui->TestText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
     ui->inventoryText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 19pt; border: none;");
     ui->servantText->setStyleSheet("background-color: black; color: cyan; font-family: Courier; font-size: 9pt; border: none;");
     ui->itemNotification->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt; border: none;");
+    ui->endingText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
     ui->blackScreen->setStyleSheet("background-color: black; border: none;");
 
     ui->servantText->lower();
@@ -287,4 +348,3 @@ void MainWindow::showUI(){
     ui->servantText->show();
     ui->blackScreen->hide();
 }
-

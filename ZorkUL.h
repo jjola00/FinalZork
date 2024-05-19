@@ -21,6 +21,11 @@ private:
     void createItems();
     void displayItems();
 
+    string q1 = "Who was the killer?";
+    string q2 = "Who was the survivor?";
+    string q3 = "Who was killed?";
+    string EndingQuestions[3];
+
 
 public:
     ZorkUL();
@@ -31,8 +36,7 @@ public:
     void setCurrentRoom(Room* room);
     void setCurrentItem(Item* item);
     string go(string direction);
-
-    friend class MainWindow;
+    string* getQuestionList();
 };
 
 

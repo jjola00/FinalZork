@@ -42,6 +42,11 @@ public:
     QTextBrowser *servantText;
     QLabel *bgLabel;
     QTextEdit *blackScreen;
+    QPushButton *endingButton;
+    QPushButton *artistButton;
+    QPushButton *daughterButton;
+    QPushButton *motherButton;
+    QTextEdit *endingText;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -101,6 +106,21 @@ public:
         blackScreen = new QTextEdit(centralwidget);
         blackScreen->setObjectName("blackScreen");
         blackScreen->setGeometry(QRect(760, 1, 261, 599));
+        endingButton = new QPushButton(centralwidget);
+        endingButton->setObjectName("endingButton");
+        endingButton->setGeometry(QRect(260, 260, 211, 61));
+        artistButton = new QPushButton(centralwidget);
+        artistButton->setObjectName("artistButton");
+        artistButton->setGeometry(QRect(110, 470, 91, 31));
+        daughterButton = new QPushButton(centralwidget);
+        daughterButton->setObjectName("daughterButton");
+        daughterButton->setGeometry(QRect(320, 470, 91, 31));
+        motherButton = new QPushButton(centralwidget);
+        motherButton->setObjectName("motherButton");
+        motherButton->setGeometry(QRect(540, 470, 91, 31));
+        endingText = new QTextEdit(centralwidget);
+        endingText->setObjectName("endingText");
+        endingText->setGeometry(QRect(170, 150, 441, 151));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -129,6 +149,10 @@ public:
         addToInventoryButton->setText(QCoreApplication::translate("MainWindow", "Add to Inventory", nullptr));
         closeInventory->setText(QCoreApplication::translate("MainWindow", "Close Inventory", nullptr));
         bgLabel->setText(QString());
+        endingButton->setText(QCoreApplication::translate("MainWindow", "Proceed.", nullptr));
+        artistButton->setText(QCoreApplication::translate("MainWindow", "The Artist", nullptr));
+        daughterButton->setText(QCoreApplication::translate("MainWindow", "The Daughter", nullptr));
+        motherButton->setText(QCoreApplication::translate("MainWindow", "The Mother", nullptr));
     } // retranslateUi
 
 };

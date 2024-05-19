@@ -15,6 +15,9 @@ using namespace std;
 
 
 ZorkUL::ZorkUL() : rooms(MAX_ROOMS), items(MAX_ITEMS) {
+    EndingQuestions[0] = q1;
+    EndingQuestions[1] = q2;
+    EndingQuestions[2] = q3;
     createRooms();
 }
 
@@ -77,8 +80,9 @@ void ZorkUL::createRooms()  {
     items = {A, B, C, D};
 
 }
-
-
+string* ZorkUL::getQuestionList(){
+    return EndingQuestions;
+}
 Room* ZorkUL::getCurrentRoom() const{
     return currentRoom;
 }

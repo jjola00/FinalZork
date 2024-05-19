@@ -210,6 +210,68 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="endingButton">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>260</y>
+      <width>211</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Proceed.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="artistButton">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>470</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>The Artist</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="daughterButton">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>470</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>The Daughter</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="motherButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>470</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>The Mother</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="endingText">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>150</y>
+      <width>441</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

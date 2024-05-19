@@ -1,7 +1,7 @@
+release/Character.o
 release/Inventory.o
 release/Room.o
 release/ZorkUL.o
-release/character.o
 release/entity.o
 release/gamemanager.o
 release/item.o

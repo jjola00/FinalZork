@@ -55,7 +55,12 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "on_addToInventoryButton_clicked",
     "on_Inventory_clicked",
     "on_closeInventory_clicked",
-    "updateSpeech"
+    "updateSpeech",
+    "on_endingButton_clicked",
+    "on_artistButton_clicked",
+    "on_daughterButton_clicked",
+    "on_motherButton_clicked",
+    "endingScreen"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -68,7 +73,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      24,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -76,32 +81,42 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  128,    2, 0x06,    1 /* Public */,
+       1,    0,  158,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,  129,    2, 0x08,    2 /* Private */,
-       4,    0,  130,    2, 0x08,    3 /* Private */,
-       5,    0,  131,    2, 0x08,    4 /* Private */,
-       6,    0,  132,    2, 0x08,    5 /* Private */,
-       7,    0,  133,    2, 0x08,    6 /* Private */,
-       8,    0,  134,    2, 0x08,    7 /* Private */,
-       9,    0,  135,    2, 0x08,    8 /* Private */,
-      10,    0,  136,    2, 0x08,    9 /* Private */,
-      11,    0,  137,    2, 0x08,   10 /* Private */,
-      12,    0,  138,    2, 0x08,   11 /* Private */,
-      13,    0,  139,    2, 0x08,   12 /* Private */,
-      14,    0,  140,    2, 0x08,   13 /* Private */,
-      15,    0,  141,    2, 0x08,   14 /* Private */,
-      16,    0,  142,    2, 0x08,   15 /* Private */,
-      17,    0,  143,    2, 0x08,   16 /* Private */,
-      18,    0,  144,    2, 0x08,   17 /* Private */,
-      19,    0,  145,    2, 0x08,   18 /* Private */,
-      20,    0,  146,    2, 0x08,   19 /* Private */,
+       3,    0,  159,    2, 0x08,    2 /* Private */,
+       4,    0,  160,    2, 0x08,    3 /* Private */,
+       5,    0,  161,    2, 0x08,    4 /* Private */,
+       6,    0,  162,    2, 0x08,    5 /* Private */,
+       7,    0,  163,    2, 0x08,    6 /* Private */,
+       8,    0,  164,    2, 0x08,    7 /* Private */,
+       9,    0,  165,    2, 0x08,    8 /* Private */,
+      10,    0,  166,    2, 0x08,    9 /* Private */,
+      11,    0,  167,    2, 0x08,   10 /* Private */,
+      12,    0,  168,    2, 0x08,   11 /* Private */,
+      13,    0,  169,    2, 0x08,   12 /* Private */,
+      14,    0,  170,    2, 0x08,   13 /* Private */,
+      15,    0,  171,    2, 0x08,   14 /* Private */,
+      16,    0,  172,    2, 0x08,   15 /* Private */,
+      17,    0,  173,    2, 0x08,   16 /* Private */,
+      18,    0,  174,    2, 0x08,   17 /* Private */,
+      19,    0,  175,    2, 0x08,   18 /* Private */,
+      20,    0,  176,    2, 0x08,   19 /* Private */,
+      21,    0,  177,    2, 0x08,   20 /* Private */,
+      22,    0,  178,    2, 0x08,   21 /* Private */,
+      23,    0,  179,    2, 0x08,   22 /* Private */,
+      24,    0,  180,    2, 0x08,   23 /* Private */,
+      25,    0,  181,    2, 0x08,   24 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -170,6 +185,16 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'on_closeInventory_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'updateSpeech'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_endingButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_artistButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_daughterButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_motherButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'endingScreen'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -200,6 +225,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 16: _t->on_Inventory_clicked(); break;
         case 17: _t->on_closeInventory_clicked(); break;
         case 18: _t->updateSpeech(); break;
+        case 19: _t->on_endingButton_clicked(); break;
+        case 20: _t->on_artistButton_clicked(); break;
+        case 21: _t->on_daughterButton_clicked(); break;
+        case 22: _t->on_motherButton_clicked(); break;
+        case 23: _t->endingScreen(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -234,13 +264,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 24)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 24;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 24)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 19;
+        _id -= 24;
     }
     return _id;
 }

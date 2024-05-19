@@ -2,7 +2,7 @@
 namespace Servant {
 
 Servant::Servant(string name, string description, int value)
-    : Entity(name, description, value){}
+: Entity(name, description, value){}
 
 Servant::Servant(){}
 string Servant::room1(){
@@ -13,7 +13,7 @@ string Servant::room1(){
 }
 string Servant::room2(){
     return "C'est La Chambre D'artiste.\nA fortnight before the incident, an Artist"
-           " was hired to paint your portrait,\n although never finished.\nALl that's left "
+           " was hired to paint your portrait,\nalthough never finished.\nAll that's left "
            "is a disfigured painting, and an empty bedframe";
 }
 
@@ -47,11 +47,11 @@ string Servant::room7(){
 string Servant::room8(){
     return "C'est La Chambre d'hotes.\nThe designated room for The Artist.\nHe was, by strict order"
            ", prohibited from entering the family's bedchamber,\n"
-           " but the showroom was never off limits.";
+           "but the showroom was never off limits.";
 }
 string Servant::room9(){
     return "C'est La Salle de Jeux.\nOnce a joyful, childish splendor for the daughter.\n"
-           "Your neglection for it grew in proportion to your business,\n and your daughter's "
+           "Your neglection for it grew in proportion to your business,\nand your daughter's "
            "joy diminished in kind.";
 }
 string Servant::room10(){

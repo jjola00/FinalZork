@@ -1,7 +1,7 @@
+debug/Character.o
 debug/Inventory.o
 debug/Room.o
 debug/ZorkUL.o
-debug/character.o
 debug/entity.o
 debug/gamemanager.o
 debug/item.o

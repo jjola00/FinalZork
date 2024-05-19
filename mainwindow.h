@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <array>
 
 #include "ZorkUL.h"
 
@@ -60,15 +61,24 @@ private slots:
 
     void updateSpeech();
 
+    void on_endingButton_clicked();
+
+    void on_artistButton_clicked();
+
+    void on_daughterButton_clicked();
+
+    void on_motherButton_clicked();
+
+    void endingScreen();
+
 signals:
     void currentRoomChanged();
 
 private:
     string direction;
     Ui::MainWindow *ui;
-    ZorkUL zork;
-
-    void createRooms();
+    int endingCount = 0;
+    bool success = false;
 };
 
 #endif // MAINWINDOW_H
