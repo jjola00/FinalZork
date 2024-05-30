@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "Inventory.h"
+#include "exitwindow.h"
 #include "ZorkUL.h"
 #include "ui_mainwindow.h"
 #include <iostream>
@@ -15,10 +16,18 @@ ZorkUL zork;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , exitWindow(new ExitWindow(this))
 {
     ui->setupUi(this);
     setUI();
 }
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+    delete exitWindow;
+}
+
 void MainWindow::updateRoomDescription() {
     std::string name = zork.getCurrentRoom()->getName();
     QString description = QString::fromStdString(name);
@@ -40,13 +49,6 @@ void MainWindow::updateBackground() {
     if(roomNumber == 12)ui->endingButton->show();
 }
 
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-
 void MainWindow::on_mapButton_clicked()
 {
     hideUI();
@@ -62,8 +64,10 @@ void MainWindow::on_upButton_clicked()
 {
     direction = "north";
     Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL)
+    if (nextRoom == NULL){
+        openExitWindow();
         cout << ("direction null");
+    }
     else
     {
         zork.setCurrentRoom(nextRoom);
@@ -78,8 +82,10 @@ void MainWindow::on_rightButton_clicked()
 {
     direction = "east";
     Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL)
+    if (nextRoom == NULL){
+        openExitWindow();
         cout << ("direction null");
+    }
     else
     {
         zork.setCurrentRoom(nextRoom);
@@ -94,8 +100,10 @@ void MainWindow::on_downButton_clicked()
 {
     direction = "south";
     Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL)
+    if (nextRoom == NULL){
+        openExitWindow();
         cout << ("direction null");
+    }
     else
     {
         zork.setCurrentRoom(nextRoom);
@@ -110,8 +118,10 @@ void MainWindow::on_leftButton_clicked()
 {
     direction = "west";
     Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL)
+    if (nextRoom == NULL){
+        openExitWindow();
         cout << ("direction null");
+    }
     else
     {
         zork.setCurrentRoom(nextRoom);
@@ -361,4 +371,10 @@ void MainWindow::showUI(){
     ui->itemTakeButton->show();
     ui->servantText->show();
     ui->blackScreen->hide();
+}
+
+void MainWindow::openExitWindow(){
+    exitWindow = new ExitWindow(this);
+    exitWindow->printExits();
+    exitWindow->show();
 }

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "Inventory.h"
+#include "exitwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -68,6 +69,8 @@ private slots:
 
     void endingScreen();
 
+    void openExitWindow();
+
 signals:
     void currentRoomChanged();
 
@@ -75,6 +78,7 @@ private:
     string direction;
     Inventory inventory;
     Ui::MainWindow *ui;
+    ExitWindow *exitWindow;
     int endingCount = 0;
     int successCount = 0;
 };

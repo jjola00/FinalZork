@@ -14,6 +14,7 @@ SOURCES += \
     Room.cpp \
     ZorkUL.cpp \
     entity.cpp \
+    exitwindow.cpp \
     gamemanager.cpp \
     item.cpp \
     main.cpp \
@@ -26,12 +27,14 @@ HEADERS += \
     ZorkUL.h \
     character.h \
     entity.h \
+    exitwindow.h \
     gamemanager.h \
     item.h \
     mainwindow.h \
     servant.h
 
 FORMS += \
+    exitwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

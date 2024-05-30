@@ -3,9 +3,11 @@ debug/Inventory.o
 debug/Room.o
 debug/ZorkUL.o
 debug/entity.o
+debug/exitwindow.o
 debug/gamemanager.o
 debug/item.o
 debug/main.o
 debug/mainwindow.o
 debug/servant.o
+debug/moc_exitwindow.o
 debug/moc_mainwindow.o
