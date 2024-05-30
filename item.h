@@ -12,7 +12,5 @@ public:
     Item(const Item& original);
 
     string itemNotification(int x);
-    template<typename T>
-    void interactWithItem(T interaction);
 };
 #endif /*ITEM_H_*/

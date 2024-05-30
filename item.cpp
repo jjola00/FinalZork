@@ -11,11 +11,4 @@ string Item::itemNotification(int x){
     }
     return "Room does not contain an item.";
 }
-template<typename T>
-void Item::interactWithItem(T action){
-    if constexpr (std::is_same_v<T, std::string>) {
-        action = getDescription();
-    }
-
-}
 

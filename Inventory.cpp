@@ -31,6 +31,6 @@ string Inventory::toString(vector <Inventory> itemList){
     }
     return result;
 }
-vector <Inventory> Inventory::getItemList(){
+ vector <Inventory> Inventory::getItemList() const{
     return itemList;
 }

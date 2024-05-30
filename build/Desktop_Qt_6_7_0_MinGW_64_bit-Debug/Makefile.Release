@@ -329,7 +329,7 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../ZorkUL.h \
+		../../Inventory.h \
 		../../Room.h \
 		../../item.h \
 		../../entity.h \
@@ -791,7 +791,7 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../ZorkUL.h \
+		../../Inventory.h \
 		../../Room.h \
 		../../item.h \
 		../../entity.h \
@@ -988,11 +988,11 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../ZorkUL.h \
+		../../Inventory.h \
 		../../Room.h \
 		../../item.h \
 		../../entity.h \
-		../../Inventory.h \
+		../../ZorkUL.h \
 		ui_mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/QApplication \
@@ -1028,7 +1028,8 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qtimer.h \
-		C:/Qt/6.7.0/mingw_64/include/QtCore/qbasictimer.h
+		C:/Qt/6.7.0/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/QtDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/servant.o: ../../servant.cpp ../../servant.h \

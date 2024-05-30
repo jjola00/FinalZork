@@ -47,6 +47,7 @@ public:
     QPushButton *daughterButton;
     QPushButton *motherButton;
     QTextEdit *endingText;
+    QTextEdit *finalText;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -121,6 +122,9 @@ public:
         endingText = new QTextEdit(centralwidget);
         endingText->setObjectName("endingText");
         endingText->setGeometry(QRect(170, 150, 441, 151));
+        finalText = new QTextEdit(centralwidget);
+        finalText->setObjectName("finalText");
+        finalText->setGeometry(QRect(170, 150, 441, 151));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");

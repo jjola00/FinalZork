@@ -20,6 +20,6 @@ public:
     string getRoomName() const;
     string getDescription() const;
     string getLongDescription() const;
-    vector <Inventory> getItemList();
+    vector <Inventory> getItemList() const;
 };
 #endif // INVENTORY_H

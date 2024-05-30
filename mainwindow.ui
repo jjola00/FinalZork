@@ -272,6 +272,16 @@
      </rect>
     </property>
    </widget>
+   <widget class="QTextEdit" name="finalText">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>150</y>
+      <width>441</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

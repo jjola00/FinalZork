@@ -2,10 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <array>
-
-#include "ZorkUL.h"
-
+#include "Inventory.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -76,9 +73,10 @@ signals:
 
 private:
     string direction;
+    Inventory inventory;
     Ui::MainWindow *ui;
     int endingCount = 0;
-    bool success = false;
+    int successCount = 0;
 };
 
 #endif // MAINWINDOW_H
