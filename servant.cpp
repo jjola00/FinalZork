@@ -1,8 +1,4 @@
 #include "servant.h"
-namespace Servant {
-
-Servant::Servant(string name, string description, int value)
-: Entity(name, description, value){}
 
 Servant::Servant(){}
 string Servant::room1(){
@@ -67,7 +63,6 @@ string Servant::room11(){
 
 string Servant::room12(){
     return "C'est L'Exit. Are you sure you want to leave?";
-}
 }
 
 

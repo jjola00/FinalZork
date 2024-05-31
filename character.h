@@ -5,6 +5,7 @@
 
 using namespace std;
 
+template<typename CharacterType>
 class Character
 {
 protected:
@@ -21,7 +22,7 @@ protected:
     virtual string room11() = 0;
     virtual string room12() = 0;
 public:
-    Character();
+    Character(){}
     virtual ~Character() = default;
 };
 #endif // CHARACTER_H
