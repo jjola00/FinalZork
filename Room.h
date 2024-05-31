@@ -15,11 +15,17 @@ private:
     bool hasItem;
     Item* item;
 
+    struct RoomFlags {
+        unsigned int roomNumber : 4;
+        bool hasItem : 1;
+    };
+
     union roomNumber{
         int intValue;
         float floatValue;
     };
 
+    RoomFlags flags;
 public:
     Room(string description, string longDescription, int number, bool hasItem);
     Room(const Room& original);
