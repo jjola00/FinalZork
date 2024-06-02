@@ -86,4 +86,4 @@ private:
     int successCount = 0;
 };
 
-#endif // MAINWINDOW_H
+#endif

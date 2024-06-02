@@ -24,4 +24,4 @@ public:
     void setValue(int value);
 };
 
-#endif // ENTITY_H
+#endif

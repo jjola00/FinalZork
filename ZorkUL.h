@@ -40,4 +40,4 @@ public:
 };
 
 
-#endif /*ZORKUL_H_*/
+#endif

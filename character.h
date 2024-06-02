@@ -25,4 +25,4 @@ public:
     Character(){}
     virtual ~Character() = default;
 };
-#endif // CHARACTER_H
+#endif

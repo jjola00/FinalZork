@@ -31,4 +31,4 @@ public:
     vector<Inventory> getItemList() const;
 };
 
-#endif // INVENTORY_H
+#endif

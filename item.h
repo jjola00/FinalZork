@@ -13,4 +13,4 @@ public:
 
     string itemNotification(int x);
 };
-#endif /*ITEM_H_*/
+#endif

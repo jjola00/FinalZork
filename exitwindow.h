@@ -26,4 +26,4 @@ private:
     friend class MainWindow;
 };
 
-#endif // EXITWINDOW_H
+#endif

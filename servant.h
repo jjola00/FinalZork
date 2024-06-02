@@ -22,4 +22,4 @@ public:
     string room12() override;
 };
 }
-#endif // SERVANT_H
+#endif
