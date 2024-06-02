@@ -32,7 +32,7 @@ ZorkUL::~ZorkUL() {
 }
 
 void ZorkUL::createRooms()  {
-    Servant servant;
+    Servant::Servant servant;
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *l;
     Item *A, *B, *C, *D;
 

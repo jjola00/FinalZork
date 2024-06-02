@@ -3,7 +3,6 @@
 #include "exitwindow.h"
 #include "ZorkUL.h"
 #include "ui_mainwindow.h"
-#include <iostream>
 #include <QPixmap>
 #include <QWidget>
 #include <QVBoxLayout>
@@ -29,14 +28,11 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::updateRoomDescription() {
-    std::string name = zork.getCurrentRoom()->getName();
-    QString description = QString::fromStdString(name);
+    QString description = QString::fromStdString(zork.getCurrentRoom()->getName());
     ui->TestText->setText(description);
 }
 void MainWindow::updateSpeech(){
-    ui->servantText->clear();
-    std::string speech = zork.getCurrentRoom()->getDescription();
-    QString itemString = QString::fromStdString(speech);
+    QString itemString = QString::fromStdString(zork.getCurrentRoom()->getDescription());
     ui->servantText->setPlainText(itemString);
 }
 void MainWindow::updateBackground() {
@@ -46,143 +42,71 @@ void MainWindow::updateBackground() {
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
     ui->servantText->show();
-    if(roomNumber == 12)ui->endingButton->show();
+    ui->endingButton->setVisible(roomNumber == 12);
 }
 
 void MainWindow::on_mapButton_clicked()
 {
     hideUI();
     ui->closeMapButton->show();
-
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/map.jpg");
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
 }
-
-void MainWindow::on_upButton_clicked()
-{
-    direction = "north";
+void MainWindow::move(const string& direction) {
     Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL){
+    if (nextRoom == nullptr) {
         openExitWindow();
-        cout << ("direction null");
-    }
-    else
-    {
+    } else {
         zork.setCurrentRoom(nextRoom);
-        Item* item = nextRoom->getItem();
-        zork.setCurrentItem(item);
+        zork.setCurrentItem(nextRoom->getItem());
         emit currentRoomChanged();
     }
 }
 
-
-void MainWindow::on_rightButton_clicked()
-{
-    direction = "east";
-    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL){
-        openExitWindow();
-        cout << ("direction null");
-    }
-    else
-    {
-        zork.setCurrentRoom(nextRoom);
-        Item* item = nextRoom->getItem();
-        zork.setCurrentItem(item);
-        emit currentRoomChanged();
-    }
-}
-
-
-void MainWindow::on_downButton_clicked()
-{
-    direction = "south";
-    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL){
-        openExitWindow();
-        cout << ("direction null");
-    }
-    else
-    {
-        zork.setCurrentRoom(nextRoom);
-        Item* item = nextRoom->getItem();
-        zork.setCurrentItem(item);
-        emit currentRoomChanged();
-    }
-}
-
-
-void MainWindow::on_leftButton_clicked()
-{
-    direction = "west";
-    Room* nextRoom = zork.getCurrentRoom()->nextRoom(direction);
-    if (nextRoom == NULL){
-        openExitWindow();
-        cout << ("direction null");
-    }
-    else
-    {
-        zork.setCurrentRoom(nextRoom);
-        Item* item = nextRoom->getItem();
-        zork.setCurrentItem(item);
-        emit currentRoomChanged();
-    }
-}
+void MainWindow::on_upButton_clicked() { move("north"); }
+void MainWindow::on_rightButton_clicked() { move("east"); }
+void MainWindow::on_downButton_clicked() { move("south"); }
+void MainWindow::on_leftButton_clicked() { move("west"); }
 
 void MainWindow::on_Inventory_clicked()
 {
-    ui->closeInventory->show();
     hideUI();
+    ui->closeInventory->show();
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/item.png");
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
-
-    string inventoryString = inventory.toString(inventory.getItemList());
-    QString invString = QString::fromStdString(inventoryString);
+    QString invString = QString::fromStdString(inventory.toString(inventory.getItemList()));
     ui->inventoryText->setText(invString);
     ui->inventoryText->show();
 }
 
 void MainWindow::on_closeInventory_clicked()
 {
+    showUI();
     updateBackground();
     ui->inventoryText->hide();
     ui->closeInventory->hide();
-    showUI();
     takeItem();
 }
 
 void MainWindow::on_closeMapButton_clicked()
 {
-    updateBackground();
     showUI();
+    updateBackground();
     takeItem();
     ui->closeMapButton->hide();
 }
 
 void MainWindow::itemNotify() {
-    int x;
-    Item item("NaN", 19, "NaN");
-    if (zork.getCurrentRoom()->getHasItem() == true) {
-         x = 1;
-    } else {
-        x = 0;
-    }
-    string itemNoti = item.itemNotification(x);
-    QString itemString = QString::fromStdString(itemNoti);
+    QString itemString = QString::fromStdString(Item("NaN", 19, "NaN").itemNotification(zork.getCurrentRoom()->getHasItem()));
     ui->itemNotification->setText(itemString);
 }
 
 void MainWindow::takeItem(){
-    if(zork.getCurrentRoom()->getHasItem() == true){
-        ui->itemTakeButton->show();
-    }
-    else{
-        ui->itemTakeButton->hide();
-    }
+    ui->itemTakeButton->setVisible(zork.getCurrentRoom()->getHasItem());
 }
 
 void MainWindow::on_itemTakeButton_clicked()
@@ -204,14 +128,11 @@ void MainWindow::on_itemTakeButton_clicked()
 
 void MainWindow::on_addToInventoryButton_clicked()
 {
-    Item *item = zork.getCurrentItem();
-    Room *room = zork.getCurrentRoom();
-    if(item != nullptr){
-        inventory.addItem(item->getName(), item->getDescription(), room->getName());
+    showUI();
+    if (Item* item = zork.getCurrentItem()) {
+        inventory.addItem(item->getName(), item->getDescription(), zork.getCurrentRoom()->getName());
     }
     zork.setCurrentItem(nullptr);
-
-    showUI();
     ui->itemTakeButton->hide();
     updateBackground();
     ui->addToInventoryButton->hide();
@@ -226,89 +147,47 @@ void MainWindow::on_endingButton_clicked()
     ui->bgLabel->lower();
     ui->endingButton->hide();
     ui->endingText->show();
-    string* text = zork.getQuestionList();
-    QString endText = QString::fromStdString(text[endingCount]);
+    QString endText = QString::fromStdString(zork.getQuestionList()[endingCount]);
     ui->endingText->setPlainText(endText);
     ui->artistButton->show();
     ui->motherButton->show();
     ui->daughterButton->show();
 }
-
-void MainWindow::on_artistButton_clicked()
-{
-    if(endingCount == 2)successCount++;
+void MainWindow::handleEnding(int correctIndex) {
+    if (endingCount == correctIndex) successCount++;
     endingCount++;
-    ui->artistButton->hide();
-    string* text = zork.getQuestionList();
-    QString endText = QString::fromStdString(text[endingCount]);
+    QString endText = QString::fromStdString(zork.getQuestionList()[endingCount]);
     ui->endingText->setPlainText(endText);
     endingScreen();
 }
 
-
-void MainWindow::on_daughterButton_clicked()
-{
-    if(endingCount == 1)successCount++;
-    endingCount++;
-    ui->daughterButton->hide();
-    string* text = zork.getQuestionList();
-    QString endText = QString::fromStdString(text[endingCount]);
-    ui->endingText->setPlainText(endText);
-    endingScreen();
-}
-
-
-void MainWindow::on_motherButton_clicked()
-{
-    if(endingCount == 0)successCount++;
-    endingCount++;
-    ui->motherButton->hide();
-    string* text = zork.getQuestionList();
-    QString endText = QString::fromStdString(text[endingCount]);
-    ui->endingText->setPlainText(endText);
-    endingScreen();
-}
+void MainWindow::on_artistButton_clicked() { handleEnding(2); }
+void MainWindow::on_daughterButton_clicked() { handleEnding(1); }
+void MainWindow::on_motherButton_clicked() { handleEnding(0); }
 
 void MainWindow::endingScreen(){
-    QString fText;
     if(endingCount == 3){
+        ui->artistButton->hide();
+        ui->motherButton->hide();
+        ui->daughterButton->hide();
         ui->finalText->show();
         QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/final.png");
         QPixmap pix(bgImage);
         ui->bgLabel->setPixmap(pix);
         ui->bgLabel->lower();
-
-    if(successCount == 3){
-        fText = QString::fromStdString("YOU WON");
-    }
-    else{
-         fText = QString::fromStdString("YOU LOSE");
-    }
-    ui->finalText->setPlainText(fText);
+        QString fText = QString::fromStdString(successCount == 3
+        ? "YOU WON\n\nIt was indeed the Wife who killed the Artist and the Daughter who survived.\nWelcome back to Raya Lucaria, Master."
+        : "YOU LOSE\n\nIt was actually the Wife who killed the Artist and the Daughter who survived.\nDepart from this house, and never return.");
+        ui->finalText->setPlainText(fText);
     }
 }
 
 void MainWindow::setUI(){
-    connect(ui->mapButton, &QPushButton::clicked, this, &MainWindow::on_mapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateRoomDescription);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateBackground);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::itemNotify);
-    connect(ui->closeMapButton, &QPushButton::clicked, this, &MainWindow::on_closeMapButton_clicked);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::takeItem);
     connect(this, &MainWindow::currentRoomChanged, this, &MainWindow::updateSpeech);
-
-    QString arrowStyleSheet = "QPushButton { background-color: black; color: white; font-family: "
-                              "Bell MT; font-size: 10pt; font-weight: bold; }";
-    ui->upButton->setStyleSheet(arrowStyleSheet);
-    ui->downButton->setStyleSheet(arrowStyleSheet);
-    ui->leftButton->setStyleSheet(arrowStyleSheet);
-    ui->rightButton->setStyleSheet(arrowStyleSheet);
-    ui->mapButton->setStyleSheet(arrowStyleSheet);
-    ui->Inventory->setStyleSheet(arrowStyleSheet);
-    ui->closeMapButton->setStyleSheet(arrowStyleSheet);
-    ui->itemTakeButton->setStyleSheet(arrowStyleSheet);
-    ui->addToInventoryButton->setStyleSheet(arrowStyleSheet);
-    ui->closeInventory->setStyleSheet(arrowStyleSheet);
 
     ui->closeMapButton->hide();
     ui->itemTakeButton->hide();
@@ -322,22 +201,6 @@ void MainWindow::setUI(){
     ui->motherButton->hide();
     ui->daughterButton->hide();
     ui->finalText->hide();
-
-    ui->TestText->setReadOnly(true);
-    ui->servantText->setReadOnly(true);
-    ui->itemNotification->setReadOnly(true);
-    ui->inventoryText->setReadOnly(true);
-    ui->blackScreen->setReadOnly(true);
-    ui->endingText->setReadOnly(true);
-    ui->finalText->setReadOnly(true);
-
-    ui->TestText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
-    ui->inventoryText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 19pt; border: none;");
-    ui->servantText->setStyleSheet("background-color: black; color: cyan; font-family: Courier; font-size: 9pt; border: none;");
-    ui->itemNotification->setStyleSheet("background-color: transparent; color: white; font-family: Bell MT; font-size: 13pt; border: none;");
-    ui->endingText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
-    ui->finalText->setStyleSheet("background-color: transparent; color: white; font-family: STLiti; font-size: 23pt; border: none;");
-    ui->blackScreen->setStyleSheet("background-color: black; border: none;");
 
     ui->servantText->lower();
 
@@ -358,6 +221,7 @@ void MainWindow::hideUI(){
     ui->itemTakeButton->hide();
     ui->servantText->hide();
     ui->blackScreen->show();
+    ui->endingButton->hide();
 }
 
 void MainWindow::showUI(){

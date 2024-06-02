@@ -9,19 +9,14 @@ Item* Room::getItem() const{
     return item;
 }
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
-    if (north != NULL)
-        exits["north"] = north;
-    if (east != NULL)
-        exits["east"] = east;
-    if (south != NULL)
-        exits["south"] = south;
-    if (west != NULL)
-        exits["west"] = west;
+    if (north != NULL) exits["north"] = north;
+    if (east != NULL)  exits["east"] = east;
+    if (south != NULL) exits["south"] = south;
+    if (west != NULL)  exits["west"] = west;
 }
 string Room::exitString() {
     string returnString = "\nexits =";
     for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
-        // Loop through map
         returnString += "  " + i->first;
     return returnString;
 }

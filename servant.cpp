@@ -1,5 +1,6 @@
 #include "servant.h"
 
+namespace Servant{
 Servant::Servant(){}
 string Servant::room1(){
     return "C'est L'Entree de la Maison de Rochefort.\nAs you explore each room, I hope the "
@@ -64,5 +65,5 @@ string Servant::room11(){
 string Servant::room12(){
     return "C'est L'Exit. Are you sure you want to leave?";
 }
-
+}
 

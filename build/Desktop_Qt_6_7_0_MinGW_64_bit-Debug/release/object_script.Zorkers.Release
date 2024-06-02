@@ -1,10 +1,8 @@
-release/Character.o
 release/Inventory.o
 release/Room.o
 release/ZorkUL.o
 release/entity.o
 release/exitwindow.o
-release/gamemanager.o
 release/item.o
 release/main.o
 release/mainwindow.o

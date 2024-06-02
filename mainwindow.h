@@ -71,6 +71,9 @@ private slots:
 
     void openExitWindow();
 
+    void move(const string& direction);
+
+    void handleEnding(int correctIndex);
 signals:
     void currentRoomChanged();
 
