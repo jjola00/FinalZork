@@ -1,0 +1,11 @@
+release/Inventory.o
+release/Room.o
+release/ZorkUL.o
+release/entity.o
+release/exitwindow.o
+release/item.o
+release/main.o
+release/mainwindow.o
+release/servant.o
+release/moc_exitwindow.o
+release/moc_mainwindow.o
