@@ -1,6 +1,5 @@
 #ifndef EXITWINDOW_H
 #define EXITWINDOW_H
-
 #include <QDialog>
 #include <QString>
 
@@ -17,12 +16,9 @@ class ExitWindow : public QDialog
 public:
     explicit ExitWindow(QWidget *parent = nullptr);
     ~ExitWindow();
-
-    void printExits();
-
 private:
     Ui::ExitWindow *ui;
-
+    void noExit();
     friend class MainWindow;
 };
 

@@ -240,6 +240,6 @@ void MainWindow::showUI(){
 
 void MainWindow::openExitWindow(){
     exitWindow = new ExitWindow(this);
-    exitWindow->printExits();
+    exitWindow->noExit();
     exitWindow->show();
 }

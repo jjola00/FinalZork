@@ -150,7 +150,7 @@ public:
         inventoryText->setGeometry(QRect(170, 10, 591, 561));
         inventoryText->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 " color: white;\n"
-"font: 23pt \"STLiti\";\n"
+"font: 20pt \"STLiti\";\n"
 "border: none;"));
         inventoryText->setReadOnly(true);
         servantText = new QTextBrowser(centralwidget);

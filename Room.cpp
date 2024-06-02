@@ -3,8 +3,6 @@
 Room::Room(string description, string longDescription, int roomNumber, bool hasItem)
     : Entity(description, longDescription, roomNumber), hasItem(hasItem) {}
 
-Room::Room(const Room& original) : Entity(original){}
-
 Item* Room::getItem() const{
     return item;
 }

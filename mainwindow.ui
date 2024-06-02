@@ -257,7 +257,7 @@ font-weight: bold;</string>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;
  color: white;
-font: 23pt &quot;STLiti&quot;;
+font: 20pt &quot;STLiti&quot;;
 border: none;</string>
     </property>
     <property name="readOnly">

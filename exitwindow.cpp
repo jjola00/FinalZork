@@ -16,7 +16,7 @@ ExitWindow::~ExitWindow()
     delete ui;
 }
 
-void ExitWindow::printExits(){
+void ExitWindow::noExit(){
     QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/item.png");
     QPixmap pix(bgImage);
     ui->exitBg->setPixmap(pix);

@@ -9,7 +9,6 @@ using namespace std;
 class Item : public Entity {
 public:
     Item(string description, int inValue, string longDescription);
-    Item(const Item& original);
 
     string itemNotification(int x);
 };

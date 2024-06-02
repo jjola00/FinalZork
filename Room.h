@@ -28,7 +28,6 @@ private:
     RoomFlags flags;
 public:
     Room(string description, string longDescription, int number, bool hasItem);
-    Room(const Room& original);
     Room* nextRoom(string direction);
     void addItem(Item *inItem);
 
