@@ -1,12 +1,8 @@
 # FinalZork
 
-A small Qt Widgets C++ project inspired by classic text adventures, featuring room navigation, item collection, and a short ending quiz. This is intentionally kept close to a "first C++ project" while being easy to clone and run.
+A Chris++ project I made all the way back in first year of ISE, a rendition of Zork inspired by my favourite visual novel/game, [The House in Fata Morgana](https://en.wikipedia.org/wiki/The_House_in_Fata_Morgana). Slightly touched up(readme, run files) so it could at LEAST run but left unrefactored. I might fork this repo to A. refactor(some bad code smells) B. Fix overall UI/UX but I would like to leave the unoriginal untouched. 
 
-## Screenshots
-
-Images are included in the repo (`1.png`..`12.png`, `map.jpg`, `item.png`, `ending.png`, `final.png`, `Painting1..4.png`).
-
-## Getting Started (Qt Creator / qmake)
+## Getting Started
 
 1. Install Qt (Qt 6 or Qt 5 with Widgets) and Qt Creator.
 2. Open `Zorkers.pro` in Qt Creator.
@@ -44,13 +40,7 @@ FinalZork/
   - `./run.sh`
 - Windows (Qt command prompt):
   - `run.bat`
-
-Both scripts create `build/`, invoke qmake and make, then run the executable. The app resolves images from `assets/` automatically.
-
-## Notes
-
-- This repo uses qmake to keep setup simple for cloning and running.
-- Minimal polish applied: relative asset loading, small safety fixes, and typo cleanup.
+  - * I am on Linux!!! So idk if windows script works and am not bothered to boot.
 
 ## License
 
