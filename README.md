@@ -1,6 +1,6 @@
 # FinalZork
 
-A Chris++ project I made all the way back in first year of ISE, a rendition of Zork inspired by my favourite visual novel/game, [The House in Fata Morgana](https://en.wikipedia.org/wiki/The_House_in_Fata_Morgana). Slightly touched up(readme, run files) so it could at LEAST run but left unrefactored. I might fork this repo to A. refactor(some bad code smells) B. Fix overall UI/UX but I would like to leave the unoriginal untouched. 
+My first Chris++ project I made all the way back in first year of ISE, a rendition of Zork inspired by my favourite visual novel/game, [The House in Fata Morgana](https://en.wikipedia.org/wiki/The_House_in_Fata_Morgana). Slightly touched up(readme, run files) so it could at LEAST run but left unrefactored. I might fork this repo to A. refactor(some bad code smells) B. Fix overall UI/UX but I would like to leave the unoriginal untouched. 
 
 ## Getting Started
 
