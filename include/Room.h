@@ -13,19 +13,9 @@ private:
     map<string, Room*> exits;
     string exitString();
     bool hasItem;
-    Item* item;
+    Item* item = nullptr;
 
-    struct RoomFlags {
-        unsigned int roomNumber : 4;
-        bool hasItem : 1;
-    };
-
-    union roomNumber{
-        int intValue;
-        float floatValue;
-    };
-
-    RoomFlags flags;
+    // Flags and unions removed for simplicity in this light polish
 public:
     Room(string description, string longDescription, int number, bool hasItem);
     Room* nextRoom(string direction);

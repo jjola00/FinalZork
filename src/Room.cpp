@@ -7,10 +7,10 @@ Item* Room::getItem() const{
     return item;
 }
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
-    if (north != NULL) exits["north"] = north;
-    if (east != NULL)  exits["east"] = east;
-    if (south != NULL) exits["south"] = south;
-    if (west != NULL)  exits["west"] = west;
+    if (north != nullptr) exits["north"] = north;
+    if (east != nullptr)  exits["east"] = east;
+    if (south != nullptr) exits["south"] = south;
+    if (west != nullptr)  exits["west"] = west;
 }
 string Room::exitString() {
     string returnString = "\nexits =";
@@ -22,7 +22,7 @@ string Room::exitString() {
 Room* Room::nextRoom(string direction) {
     map<string, Room*>::iterator next = exits.find(direction);
     if (next == exits.end())
-        return NULL;
+        return nullptr;
     return next->second;
 }
 

@@ -10,6 +10,6 @@ class Item : public Entity {
 public:
     Item(string description, int inValue, string longDescription);
 
-    string itemNotification(int x);
+    string itemNotification(bool hasItem);
 };
 #endif

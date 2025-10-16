@@ -9,9 +9,38 @@
 #include <QTextEdit>
 #include <QTimer>
 #include <QtDebug>
+#include <QCoreApplication>
+#include <QDir>
+#include <QFileInfo>
 
 using namespace std;
 ZorkUL zork;
+namespace {
+static QString findAsset(const QString &fileName) {
+    // Try executable dir
+    QStringList candidates;
+    const QString exeDir = QCoreApplication::applicationDirPath();
+    candidates << exeDir + "/" + fileName;
+    // Try one and two levels up (common Qt build dirs)
+    candidates << exeDir + "/../" + fileName;
+    candidates << exeDir + "/../../" + fileName;
+    // Try assets folder near the executable (common when running from build/)
+    candidates << exeDir + "/../assets/" + fileName;
+    candidates << exeDir + "/../../assets/" + fileName;
+    // Try current working directory
+    candidates << QDir::currentPath() + "/" + fileName;
+    // Try assets folder relative to current working directory
+    candidates << QDir::currentPath() + "/assets/" + fileName;
+    candidates << QDir::currentPath() + "/../assets/" + fileName;
+    // Finally try project root relative when running from source
+    candidates << fileName;
+    for (const QString &path : candidates) {
+        QFileInfo fi(path);
+        if (fi.exists() && fi.isFile()) return fi.absoluteFilePath();
+    }
+    return fileName; // fallback; Qt will show empty pixmap if missing
+}
+}
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,7 +66,7 @@ void MainWindow::updateSpeech(){
 }
 void MainWindow::updateBackground() {
     int roomNumber = zork.getCurrentRoom()->getValue();
-    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/%1.png").arg(roomNumber);
+    QString bgImage = findAsset(QString("%1.png").arg(roomNumber));
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
@@ -49,7 +78,7 @@ void MainWindow::on_mapButton_clicked()
 {
     hideUI();
     ui->closeMapButton->show();
-    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/map.jpg");
+    QString bgImage = findAsset("map.jpg");
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
@@ -74,7 +103,7 @@ void MainWindow::on_Inventory_clicked()
 {
     hideUI();
     ui->closeInventory->show();
-    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/item.png");
+    QString bgImage = findAsset("item.png");
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
@@ -119,7 +148,7 @@ void MainWindow::on_itemTakeButton_clicked()
 
     Item* currentItem = zork.getCurrentItem();
     if (currentItem != nullptr) {
-        QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/Painting%1.png").arg(currentItem->getValue());
+        QString bgImage = findAsset(QString("Painting%1.png").arg(currentItem->getValue()));
         QPixmap pix(bgImage);
         ui->bgLabel->setPixmap(pix);
         ui->bgLabel->lower();
@@ -141,14 +170,16 @@ void MainWindow::on_addToInventoryButton_clicked()
 void MainWindow::on_endingButton_clicked()
 {
     hideUI();
-    QString bgImage = QString("C:/Users/23373326/MyRepos/Zorkers/ending.png");
+    QString bgImage = findAsset("ending.png");
     QPixmap pix(bgImage);
     ui->bgLabel->setPixmap(pix);
     ui->bgLabel->lower();
     ui->endingButton->hide();
     ui->endingText->show();
-    QString endText = QString::fromStdString(zork.getQuestionList()[endingCount]);
-    ui->endingText->setPlainText(endText);
+    if (endingCount >= 0 && endingCount < 3) {
+        QString endText = QString::fromStdString(zork.getQuestionList()[endingCount]);
+        ui->endingText->setPlainText(endText);
+    }
     ui->artistButton->show();
     ui->motherButton->show();
     ui->daughterButton->show();
@@ -156,8 +187,10 @@ void MainWindow::on_endingButton_clicked()
 void MainWindow::handleEnding(int correctIndex) {
     if (endingCount == correctIndex) successCount++;
     endingCount++;
-    QString endText = QString::fromStdString(zork.getQuestionList()[endingCount]);
-    ui->endingText->setPlainText(endText);
+    if (endingCount >= 0 && endingCount < 3) {
+        QString endText = QString::fromStdString(zork.getQuestionList()[endingCount]);
+        ui->endingText->setPlainText(endText);
+    }
     endingScreen();
 }
 

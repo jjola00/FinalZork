@@ -1,0 +1,23 @@
+# Qt/qmake build artifacts
+build/
+*.pro.user*
+*.qmlc
+*.jsc
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.dylib
+*.so
+*.qrc.dep
+moc_*
+ui_*.h
+Makefile*
+*.exe
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/
+

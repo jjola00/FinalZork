@@ -18,6 +18,7 @@ ZorkUL::ZorkUL() : rooms(MAX_ROOMS), items(MAX_ITEMS) {
     EndingQuestions[0] = q1;
     EndingQuestions[1] = q2;
     EndingQuestions[2] = q3;
+    currentItem = nullptr;
     createRooms();
 }
 
@@ -62,18 +63,18 @@ void ZorkUL::createRooms()  {
     k->addItem(D);
     l = new Room("L'Exit", servant.room12(), 12, false);
 
-    a->setExits(b,NULL, NULL, NULL);
-    b->setExits(NULL, d, a, c);
-    c->setExits(f, b, NULL, NULL);
-    d->setExits(NULL, e, NULL, b);
-    e->setExits(h, NULL, NULL, d);
-    f->setExits(j, NULL, c, g);
-    g->setExits(NULL, f, NULL, NULL);
-    h->setExits(i, NULL, e, NULL);
-    i->setExits(NULL, NULL, h, k);
-    j->setExits(NULL, k, f, NULL);
-    k->setExits(l, i, NULL, j);
-    l->setExits(NULL, NULL, k, NULL);
+    a->setExits(b,nullptr, nullptr, nullptr);
+    b->setExits(nullptr, d, a, c);
+    c->setExits(f, b, nullptr, nullptr);
+    d->setExits(nullptr, e, nullptr, b);
+    e->setExits(h, nullptr, nullptr, d);
+    f->setExits(j, nullptr, c, g);
+    g->setExits(nullptr, f, nullptr, nullptr);
+    h->setExits(i, nullptr, e, nullptr);
+    i->setExits(nullptr, nullptr, h, k);
+    j->setExits(nullptr, k, f, nullptr);
+    k->setExits(l, i, nullptr, j);
+    l->setExits(nullptr, nullptr, k, nullptr);
 
     currentRoom = a;
     rooms = {a, b, c, d, e, f, g, h, i, j, k, l};
